@@ -6,11 +6,16 @@
   "author": "Edwin Montealvo",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "serve": "yarn clean && gulp serve"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.12.1",
+    "@emotion/babel-plugin": "^11.0.0",
     "@loadable/babel-plugin": "^5.13.2",
     "@loadable/webpack-plugin": "^5.14.0",
     "@types/eslint": "^7.2.4",
@@ -51,11 +56,14 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
+    "@apollo/client": "^3.2.5",
     "@emotion/react": "^11.0.0",
     "@emotion/server": "^11.0.0",
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.0",
+    "cross-fetch": "^3.0.6",
     "express": "^4.17.1",
+    "graphql": "^15.4.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",

@@ -23,9 +23,6 @@ const clientConfig: WebpackConfiguration = merge(common, {
     filename: 'js/[name].js',
     publicPath: '/',
   },
-  module: {
-    rules: [],
-  },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
       async: false,
