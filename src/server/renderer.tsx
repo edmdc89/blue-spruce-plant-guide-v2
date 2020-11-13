@@ -8,7 +8,7 @@ import { CacheProvider } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
-import ApolloClient from '../config/apolloClient';
+import ApolloClient from '../config/store';
 import App from '../client/modules/App';
 import { StaticRouter } from 'react-router-dom';
 import template from './template';
