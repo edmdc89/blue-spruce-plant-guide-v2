@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
-import ApolloClient from '../config/apolloClient';
+import ApolloClient from '../config/store';
 
 const render = (App: () => JSX.Element) => {
   const cache = createCache({ key: 'custom' });
