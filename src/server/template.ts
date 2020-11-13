@@ -17,7 +17,7 @@ export default function template(
       <body>
         <section id="root">${body}</section>
         <script>
-          window.__INITIAL_STATE__ = ${state}
+          window.__APOLLO_CLIENT__ = ${state}
         </script>
         ${scripts}
       </body>

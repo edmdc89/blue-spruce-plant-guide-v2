@@ -7,11 +7,11 @@ import Helmet from 'react-helmet';
 import { CacheProvider } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
-import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
+import ApolloClient from '../config/apolloClient';
 import App from '../client/modules/App';
 import { StaticRouter } from 'react-router-dom';
 import template from './template';
-import fetch from 'cross-fetch';
 
 type Context = {
   url?: string;
@@ -30,17 +30,9 @@ export default async function renderer(
       statsFile,
       entrypoints: ['client', 'react-vendors'],
     });
-    const apolloClient = new ApolloClient({
-      ssrMode: true,
-      link: createHttpLink({
-        uri: 'http://localhost:8080',
-        fetch,
-      }),
-      cache: new InMemoryCache(),
-    });
     const context: Context = {};
     const Client = (
-      <ApolloProvider client={apolloClient}>
+      <ApolloProvider client={ApolloClient}>
         <CacheProvider value={cache}>
           <StaticRouter location={req.url} context={context}>
             <App />
@@ -56,7 +48,7 @@ export default async function renderer(
       res.end();
     } else {
       const jsx = extractor.collectChunks(Client);
-      const initialState = apolloClient.extract();
+      const initialState = ApolloClient.extract();
       const { html, css, ids } = extractCritical(renderToString(jsx));
       const styleTag = `<style data-emotion="${key} ${ids.join(' ')}">${css}</style>`;
       const scriptTags = extractor.getScriptTags();
