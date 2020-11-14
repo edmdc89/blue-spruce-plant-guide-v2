@@ -8,9 +8,9 @@ import { CacheProvider } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
-import ApolloClient from '../config/store';
+import { apolloClient } from '../config/store';
 import App from '../client/modules/App';
-import { StaticRouter } from 'react-router-dom';
+import { StaticRouter } from 'react-router';
 import template from './template';
 
 type Context = {
@@ -32,12 +32,12 @@ export default async function renderer(
     });
     const context: Context = {};
     const Client = (
-      <ApolloProvider client={ApolloClient}>
-        <CacheProvider value={cache}>
-          <StaticRouter location={req.url} context={context}>
+      <ApolloProvider client={apolloClient}>
+        <StaticRouter location={req.url} context={context}>
+          <CacheProvider value={cache}>
             <App />
-          </StaticRouter>
-        </CacheProvider>
+          </CacheProvider>
+        </StaticRouter>
       </ApolloProvider>
     );
 
@@ -48,7 +48,8 @@ export default async function renderer(
       res.end();
     } else {
       const jsx = extractor.collectChunks(Client);
-      const initialState = ApolloClient.extract();
+      const initialState = apolloClient.extract();
+      console.log(initialState);
       const { html, css, ids } = extractCritical(renderToString(jsx));
       const styleTag = `<style data-emotion="${key} ${ids.join(' ')}">${css}</style>`;
       const scriptTags = extractor.getScriptTags();

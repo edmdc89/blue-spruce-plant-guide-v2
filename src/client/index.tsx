@@ -6,18 +6,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
-import ApolloClient from '../config/store';
+import { apolloClient } from '../config/store';
 
 const render = (App: () => JSX.Element) => {
   const cache = createCache({ key: 'custom' });
   const root = document.getElementById('root');
   const Client = (
-    <ApolloProvider client={ApolloClient}>
-      <CacheProvider value={cache}>
-        <BrowserRouter>
+    <ApolloProvider client={apolloClient}>
+      <BrowserRouter>
+        <CacheProvider value={cache}>
           <App />
-        </BrowserRouter>
-      </CacheProvider>
+        </CacheProvider>
+      </BrowserRouter>
     </ApolloProvider>
   );
 

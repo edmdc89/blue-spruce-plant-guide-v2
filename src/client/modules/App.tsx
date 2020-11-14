@@ -1,7 +1,7 @@
 import React from 'react';
 import { Global, css } from '@emotion/react';
-// import { Route, Switch } from 'react-router-dom';
-// import routes from '../../routes';
+import { Route, Switch } from 'react-router-dom';
+import routes from '../../config/router/routes';
 // import Layout from './Layout';
 // import { ThemeProvider } from 'styled-components';
 // import GlobalStyle from '../ui/common/root';
@@ -10,6 +10,13 @@ import { Global, css } from '@emotion/react';
 export default function App(): JSX.Element {
   return (
     <>
+      <main>
+        <Switch>
+          {routes.map((route) => (
+            <Route {...route} key={route.path} />
+          ))}
+        </Switch>
+      </main>
       <Global
         styles={css`
           * {
@@ -31,7 +38,6 @@ export default function App(): JSX.Element {
           }
         `}
       />
-      <h4>Hello World!!</h4>
     </>
   );
 }

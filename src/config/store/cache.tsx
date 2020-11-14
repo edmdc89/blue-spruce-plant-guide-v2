@@ -1,14 +1,18 @@
 import { InMemoryCache, ReactiveVar, makeVar } from '@apollo/client';
 
-export default new InMemoryCache({
+export const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
         plantGuide: {
-          read: () => plantGuideVar(),
+          read() {
+            return plantGuideVar();
+          },
         },
         currentQuiz: {
-          read: () => quizVar(),
+          read() {
+            return quizVar();
+          },
         },
       },
     },
