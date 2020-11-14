@@ -32,11 +32,7 @@ export default function Layout(): JSX.Element {
             box-sizing: border-box;
             overflow-y: hidden;
             font-family: 'Ubuntu', sans-serif;
-            background: linear-gradient(
-              to bottom right,
-              ${theme.colors.primary},
-              ${theme.colors.primaryAccent}
-            );
+            background: ${theme.colors.primary};
             height: 100vh;
             overflow-y: scroll;
           }

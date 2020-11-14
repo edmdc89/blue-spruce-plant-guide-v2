@@ -18,14 +18,10 @@ const headerStyles = css`
 const Header = (): JSX.Element => {
   const theme = useTheme();
   return (
-    <section
+    <header
       css={css`
         ${headerStyles}
-        background: linear-gradient(
-          to bottom right,
-          ${theme.colors.secondary},
-          ${theme.colors.secondaryAccent}
-        );
+        background: ${theme.colors.secondaryAccent};
       `}
     >
       <NavLink css={linkBaseStyles} to="/">
@@ -59,7 +55,7 @@ const Header = (): JSX.Element => {
           Quiz
         </NavLink>
       </nav>
-    </section>
+    </header>
   );
 };
 

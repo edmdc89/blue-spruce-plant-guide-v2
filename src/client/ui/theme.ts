@@ -11,5 +11,5 @@ export const theme: Theme = {
   },
   borderSize: '.3rem',
   borderRadius: '.5rem',
-  gridGap: '.8rem',
+  gridGap: 0.8,
 };
