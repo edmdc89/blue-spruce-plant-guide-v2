@@ -1,18 +1,25 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/react';
+import { css, jsx, useTheme } from '@emotion/react';
 import { PlantDetails } from '../../../types/app';
 import { addBackgroundImage } from '../common/mixins';
+import { headingStyles } from '../typography/headings';
 
 type PlantCardProps = {
   plant: PlantDetails;
 };
 
 const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
+  const theme = useTheme();
   return (
     <article
       css={css`
-        background-color: white;
-        position: relative;
+        background-image: linear-gradient(
+          to bottom right,
+          ${theme.colors.secondary},
+          ${theme.colors.secondaryAccent}
+        );
+        border-radius: ${theme.borderRadius};
+        text-align: center;
       `}
     >
       <div
@@ -22,7 +29,13 @@ const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
       >
         {' '}
       </div>
-      <h4>{plant.commonName}</h4>
+      <h4
+        css={css`
+          ${headingStyles('h4')}
+        `}
+      >
+        {plant.commonName}
+      </h4>
     </article>
   );
 };

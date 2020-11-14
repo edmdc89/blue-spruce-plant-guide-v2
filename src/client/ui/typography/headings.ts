@@ -11,7 +11,11 @@ const key = {
   h6: '1.8rem',
 };
 
-export const headingStyles = (type: HeaderLevels): SerializedStyles => css`
+export const headingStyles = (
+  type: HeaderLevels,
+  color = 'rgba(251, 241, 199, 1)',
+): SerializedStyles => css`
+  color: ${color};
   font-size: ${key[type]};
   padding: 0.3rem;
   margin: 0.5rem auto;

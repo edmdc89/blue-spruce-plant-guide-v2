@@ -12,6 +12,6 @@ declare module '@emotion/react' {
     };
     borderRadius: string;
     borderSize: string;
-    gridGap: string;
+    gridGap: number;
   }
 }
