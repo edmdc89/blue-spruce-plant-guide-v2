@@ -15,4 +15,5 @@ export const headingStyles = (type: HeaderLevels): SerializedStyles => css`
   font-size: ${key[type]};
   padding: 0.3rem;
   margin: 0.5rem auto;
+  font-family: 'Fira Sans', sans-serif;
 `;
