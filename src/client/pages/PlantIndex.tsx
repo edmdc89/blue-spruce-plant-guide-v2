@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import React from 'react';
 import { GET_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
 import { PlantInfo } from '../../types/app';
-import Grid from '../ui/containers/grid';
+import Grid from '../ui/common/grid';
 
 const PlantIndex = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_PLANT_PAGE);
