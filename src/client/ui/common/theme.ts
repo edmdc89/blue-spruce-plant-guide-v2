@@ -1,0 +1,15 @@
+import { Theme } from '@emotion/react';
+
+export const theme: Theme = {
+  color: {
+    primary: 'RGBA(28,49,68,1)',
+    primaryAccent: 'RGBA(23,30,11,1)',
+    secondary: 'RGBA(89,111,98,1)',
+    secondaryAccent: 'RGBA(87,116,71,1)',
+    textDark: 'rgba(60,56,54,1)',
+    textLight: 'rgba(251,241,199,1)',
+  },
+  borderSize: '.3rem',
+  borderRadius: '.5rem',
+  gridGap: '.8rem',
+};
