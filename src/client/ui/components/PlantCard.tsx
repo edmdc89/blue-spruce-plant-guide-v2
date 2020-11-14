@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import { PlantDetails } from '../../../types/app';
+import { addBackgroundImage } from '../common/mixins';
 
 type PlantCardProps = {
   plant: PlantDetails;
@@ -11,9 +12,16 @@ const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
     <article
       css={css`
         background-color: white;
+        position: relative;
       `}
     >
-      <img src={plant.imageUrl} alt={plant.scientificName} />
+      <div
+        css={css`
+          ${addBackgroundImage(plant.imageUrl)}
+        `}
+      >
+        {' '}
+      </div>
       <h4>{plant.commonName}</h4>
     </article>
   );
