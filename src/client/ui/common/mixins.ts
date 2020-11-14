@@ -5,8 +5,9 @@ export const addBackgroundImage = (url: string): SerializedStyles => css`
   height: 24rem;
   background-blend-mode: screen;
   background-image: url(${url});
-  margin: 1rem 1rem;
   background-position: center center;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
 `;
 
 export const clearfix = css`
