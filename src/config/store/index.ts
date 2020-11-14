@@ -2,15 +2,15 @@ import { ApolloClient, createHttpLink } from '@apollo/client';
 import fetch from 'cross-fetch';
 
 import { cache } from './cache';
+import typeDefs from './schema';
 
-export default new ApolloClient({
+export const apolloClient = new ApolloClient({
   ssrMode: true,
-  cache: cache.restore(window.__APOLLO_STATE__),
+  cache: cache,
   link: createHttpLink({
-    uri: 'http://localhost:8080/',
-    credentials: 'same-origin',
+    uri: 'http://localhost:4000/graphql',
     fetch,
   }),
+  typeDefs: typeDefs,
   connectToDevTools: true,
 });
-
