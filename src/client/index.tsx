@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { loadableReady } from '@loadable/component';
-import App from './modules/App';
+import Layout from './modules/common/Layout';
 import { BrowserRouter } from 'react-router-dom';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
@@ -24,4 +24,4 @@ const render = (App: () => JSX.Element) => {
   ReactDOM.hydrate(Client, root);
 };
 
-loadableReady(() => render(App));
+loadableReady(() => render(Layout));

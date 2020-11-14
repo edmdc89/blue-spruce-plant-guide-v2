@@ -2,7 +2,6 @@ import { ApolloClient, createHttpLink } from '@apollo/client';
 import fetch from 'cross-fetch';
 
 import { cache } from './cache';
-import typeDefs from './schema';
 
 export const apolloClient = new ApolloClient({
   ssrMode: true,
@@ -11,6 +10,5 @@ export const apolloClient = new ApolloClient({
     uri: 'http://localhost:4000/graphql',
     fetch,
   }),
-  typeDefs: typeDefs,
   connectToDevTools: true,
 });

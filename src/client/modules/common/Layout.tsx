@@ -1,15 +1,13 @@
 import React from 'react';
 import { Global, css } from '@emotion/react';
 import { Route, Switch } from 'react-router-dom';
-import routes from '../../config/router/routes';
-// import Layout from './Layout';
-// import { ThemeProvider } from 'styled-components';
-// import GlobalStyle from '../ui/common/root';
-// import { getGruvBoxTheme } from '../ui/common/theme';
+import routes from '../../../config/router/routes';
+import Header from './Header';
 
-export default function App(): JSX.Element {
+export default function Layout(): JSX.Element {
   return (
     <>
+      <Header />
       <main>
         <Switch>
           {routes.map((route) => (

@@ -9,7 +9,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from '../config/store';
-import App from '../client/modules/App';
+import Layout from '../client/modules/common/Layout';
 import { StaticRouter } from 'react-router';
 import template from './template';
 
@@ -35,7 +35,7 @@ export default async function renderer(
       <ApolloProvider client={apolloClient}>
         <StaticRouter location={req.url} context={context}>
           <CacheProvider value={cache}>
-            <App />
+            <Layout />
           </CacheProvider>
         </StaticRouter>
       </ApolloProvider>
@@ -49,7 +49,6 @@ export default async function renderer(
     } else {
       const jsx = extractor.collectChunks(Client);
       const initialState = apolloClient.extract();
-      console.log(initialState);
       const { html, css, ids } = extractCritical(renderToString(jsx));
       const styleTag = `<style data-emotion="${key} ${ids.join(' ')}">${css}</style>`;
       const scriptTags = extractor.getScriptTags();
