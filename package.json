@@ -60,6 +60,7 @@
     "@apollo/client": "^3.2.5",
     "@emotion/react": "^11.0.0",
     "@emotion/server": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.0",
     "cors": "^2.8.5",
