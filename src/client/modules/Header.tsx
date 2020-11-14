@@ -2,8 +2,18 @@
 import { css, jsx, useTheme } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 import { headingStyles } from '../ui/typography/headings';
-import { headerStyles } from '../ui/containers';
 import { activeLinkStyles, linkBaseStyles } from '../ui/typography/links';
+
+const headerStyles = css`
+  height: 9rem;
+  width: 110rem;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const Header = (): JSX.Element => {
   const theme = useTheme();

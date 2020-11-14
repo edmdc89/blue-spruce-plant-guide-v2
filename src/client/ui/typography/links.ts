@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { stripedLowerBorder } from '../containers/borders';
+import { stripedLowerBorder } from '../common/borders';
 
 export const linkBaseStyles = css`
   color: rgba(251, 241, 199, 1);
