@@ -10,3 +10,9 @@ export const GET_PLANT_PAGE = gql`
     }
   }
 `;
+
+export const GET_CURRENT_QUIZ = gql`
+  query GetCurrentQuiz {
+    currentQuiz @client
+  }
+`;
