@@ -2,7 +2,7 @@ import '@emotion/react';
 
 declare module '@emotion/react' {
   export interface Theme {
-    color: {
+    colors: {
       primary: string;
       secondary: string;
       primaryAccent: string;

@@ -1,4 +1,4 @@
-import { Home, PlantIndex } from '../../client/pages';
+import { Home, PlantIndex, Quiz } from '../../client/pages';
 const routes = [
   {
     path: '/plant-index',
@@ -10,16 +10,11 @@ const routes = [
     exact: true,
     component: Home,
   },
-  // {
-  //   path: '/quiz',
-  //   component: Quiz,
-  //   routes: [
-  //     {
-  //       path: '/quiz/results',
-  //       component: QuizResults,
-  //     },
-  //   ],
-  // },
+  {
+    path: '/quiz',
+    exact: false,
+    component: Quiz,
+  },
 ];
 
 export default routes;

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Global, css } from '@emotion/react';
+import { Global, css, ThemeProvider } from '@emotion/react';
 import { Route, Switch } from 'react-router-dom';
-import routes from '../../../config/router/routes';
+import routes from '../../config/router/routes';
 import Header from './Header';
+import { theme } from '../ui/theme';
 
 export default function Layout(): JSX.Element {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Header />
       <main>
         <Switch>
@@ -31,11 +32,16 @@ export default function Layout(): JSX.Element {
             box-sizing: border-box;
             overflow-y: hidden;
             font-family: 'Ubuntu', sans-serif;
+            background: linear-gradient(
+              to bottom right,
+              ${theme.colors.primary},
+              ${theme.colors.primaryAccent}
+            );
             height: 100vh;
             overflow-y: scroll;
           }
         `}
       />
-    </>
+    </ThemeProvider>
   );
 }
