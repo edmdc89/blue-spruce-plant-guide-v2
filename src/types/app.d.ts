@@ -1,13 +1,15 @@
-export interface PlantInfo {
+export interface PlantDetails {
   id: number;
-  commonName: string;
+  commonName?: string;
   scientificName: string;
   imageUrl: string;
+  familyCommonName?: string;
+  family: string;
 }
 
 export interface QuizChoice {
-  roundAnswers: PlantInfo[];
-  correctAnswer: PlantInfo;
+  roundAnswers: PlantDetails[];
+  correctAnswer: PlantDetails;
 }
 
 export interface QuizInfo {
