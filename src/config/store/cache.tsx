@@ -1,14 +1,10 @@
 import { InMemoryCache, ReactiveVar, makeVar } from '@apollo/client';
+import { PlantInfo, QuizInfo } from '../../types/app';
 
 export const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        plantGuide: {
-          read() {
-            return plantGuideVar();
-          },
-        },
         currentQuiz: {
           read() {
             return quizVar();
@@ -18,34 +14,6 @@ export const cache = new InMemoryCache({
     },
   },
 });
-
-type PlantInfo = {
-  id: number;
-  commonName: string;
-  scientificName: string;
-  imageUrl: string;
-};
-
-type QuizChoice = {
-  roundAnswers: PlantInfo[];
-  correctAnswer: PlantInfo;
-};
-
-type QuizInfo = {
-  round: number;
-  quizLength: number;
-  quizScore: number;
-  currentQuiz: QuizChoice[];
-};
-
-const initialPlantGuide = [
-  {
-    id: 146159,
-    commonName: 'toad rush',
-    scientificName: 'Juncus bufonius',
-    imageUrl: 'https://bs.floristic.org/image/o/8f50df8a7970cae2d20a9731738f5de38f2cf2f8',
-  },
-];
 
 const mockQuizInfo = {
   round: 1,
@@ -88,7 +56,5 @@ const mockQuizInfo = {
     },
   ],
 };
-
-export const plantGuideVar: ReactiveVar<PlantInfo[]> = makeVar(initialPlantGuide);
 
 export const quizVar: ReactiveVar<QuizInfo> = makeVar(mockQuizInfo);

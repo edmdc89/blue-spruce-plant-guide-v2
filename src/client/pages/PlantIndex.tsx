@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { GET_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
+import { PlantInfo } from '../../types/app';
 
 const PlantIndex = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_PLANT_PAGE);
@@ -12,7 +13,7 @@ const PlantIndex = (): JSX.Element => {
 
   return (
     <>
-      {data.plantCatalog.map((plant: any) => {
+      {data.plantCatalog.map((plant: PlantInfo) => {
         return (
           <div key={plant.id}>
             <p>{plant.commonName}</p>
