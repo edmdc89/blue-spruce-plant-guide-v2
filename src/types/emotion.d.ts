@@ -13,5 +13,6 @@ declare module '@emotion/react' {
     borderRadius: string;
     borderSize: string;
     gridGap: number;
+    maxWidth: number;
   }
 }
