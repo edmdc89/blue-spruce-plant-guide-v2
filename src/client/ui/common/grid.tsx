@@ -2,10 +2,8 @@
 import styled from '@emotion/styled';
 import { remify } from '../common/helpers';
 
-type validColumnNumber = 2 | 3 | 4;
-
 interface GridProps {
-  columnNumber: validColumnNumber;
+  columnNumber: number;
   maxWidth?: number;
 }
 

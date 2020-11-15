@@ -6,7 +6,7 @@ import { activeLinkStyles, linkBaseStyles } from '../ui/typography/links';
 
 const headerStyles = css`
   height: 9rem;
-  width: 110rem;
+  max-width: 110rem;
   margin: 1.5rem auto;
   padding: 0 1.5rem;
   display: flex;

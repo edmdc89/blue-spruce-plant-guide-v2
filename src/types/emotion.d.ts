@@ -14,5 +14,9 @@ declare module '@emotion/react' {
     borderSize: string;
     gridGap: number;
     maxWidth: number;
+    fonts: {
+      body: string;
+      heading: string;
+    };
   }
 }
