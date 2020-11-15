@@ -63,11 +63,31 @@ const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
         <h4 css={headingStyles('h4')}>{plant.commonName}</h4>
       </Side>
       <Side className="back">
-        <h4 css={headingStyles('h4')}>Scientific Name:</h4>
-        <h6>{plant.scientificName}</h6>
-        <h4 css={headingStyles('h4')}>Family Name:</h4>
-        <h6>{plant.family}</h6>
-        <h6>{plant.familyCommonName}</h6>
+        <h5 css={headingStyles('h5', { inverColor: true })}>Scientific Name:</h5>
+        <h6
+          css={headingStyles('h6', {
+            inverColor: true,
+            bodyText: true,
+            italic: true,
+            thin: true,
+          })}
+        >
+          {plant.scientificName}
+        </h6>
+        <h5 css={headingStyles('h5', { inverColor: true })}>Family Name:</h5>
+        <h6 css={headingStyles('h6', { inverColor: true, bodyText: true, thin: true })}>
+          {plant.familyCommonName}
+        </h6>
+        <h6
+          css={headingStyles('h6', {
+            inverColor: true,
+            bodyText: true,
+            italic: true,
+            thin: true,
+          })}
+        >
+          {plant.familyScientificName}
+        </h6>
       </Side>
     </InfoCard>
   );
