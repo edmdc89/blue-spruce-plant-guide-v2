@@ -18,6 +18,7 @@ const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
     left: 0;
     width: 100%;
     backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
     overflow: hidden;
   `;
 
@@ -26,6 +27,7 @@ const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
       css={css`
         perspective: 150rem;
         -moz-perspective: 120rem;
+        height: 35rem;
       `}
     >
       <div

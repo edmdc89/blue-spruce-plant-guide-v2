@@ -14,7 +14,7 @@ const PlantIndex = (): JSX.Element => {
   if (error) return <p>Error :( </p>;
 
   return (
-    <Grid maxWidth={109} columnNumber={3} gridGap={theme.gridGap} rowHeight={10}>
+    <Grid rowHeight={40} columnNumber={3}>
       {data.plantCatalog.map((plant: PlantDetails) => (
         <PlantCard plant={plant} key={plant.id} />
       ))}
