@@ -7,6 +7,8 @@ export const GET_PLANT_PAGE = gql`
       id
       imageUrl
       scientificName
+      familyScientificName
+      familyCommonName
     }
   }
 `;

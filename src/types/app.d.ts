@@ -4,7 +4,7 @@ export interface PlantDetails {
   scientificName: string;
   imageUrl: string;
   familyCommonName?: string;
-  family: string;
+  familyScientificName: string;
 }
 
 export interface QuizChoice {
