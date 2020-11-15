@@ -1,5 +1,4 @@
 import { useQuery } from '@apollo/client';
-import { useTheme } from '@emotion/react';
 import React from 'react';
 import { GET_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
 import { PlantDetails } from '../../types/app';
@@ -7,7 +6,6 @@ import Grid from '../ui/common/grid';
 import { PlantCard } from '../ui/components';
 
 const PlantIndex = (): JSX.Element => {
-  const theme = useTheme();
   const { loading, error, data } = useQuery(GET_PLANT_PAGE);
 
   if (loading) return <p>Loading...</p>;

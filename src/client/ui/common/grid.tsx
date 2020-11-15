@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { css, jsx, useTheme } from '@emotion/react';
-import styled from '@emotion/styled';
 import { remify } from '../common/helpers';
 
 type validColumnNumber = 2 | 3 | 4;
