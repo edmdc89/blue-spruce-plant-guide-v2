@@ -11,6 +11,6 @@ export const theme: Theme = {
   },
   borderSize: '.3rem',
   borderRadius: '.5rem',
-  gridGap: 0.8,
+  gridGap: 1.5,
   maxWidth: 110,
 };
