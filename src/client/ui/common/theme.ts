@@ -6,7 +6,7 @@ const theme: Theme = {
     primaryAccent: 'RGBA(23,30,11,1)',
     secondary: 'RGBA(89,111,98,1)',
     secondaryAccent: 'RGBA(87,116,71,1)',
-    textDark: 'rgba(60,56,54,1)',
+    textDark: 'rgba(80,73,69,1)',
     textLight: 'rgba(251,241,199,1)',
   },
   borderSize: '.3rem',
