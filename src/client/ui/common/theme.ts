@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 
-export const theme: Theme = {
+const theme: Theme = {
   colors: {
     primary: 'RGBA(28,49,68,1)',
     primaryAccent: 'RGBA(23,30,11,1)',
@@ -13,4 +13,10 @@ export const theme: Theme = {
   borderRadius: '.5rem',
   gridGap: 1.5,
   maxWidth: 110,
+  fonts: {
+    body: "'Ubuntu', sans-serif",
+    heading: "'Fira Sans', sans-serif",
+  },
 };
+
+export default theme;

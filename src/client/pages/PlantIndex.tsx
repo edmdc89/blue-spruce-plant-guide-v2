@@ -12,7 +12,7 @@ const PlantIndex = (): JSX.Element => {
   if (error) return <p>Error :( </p>;
 
   return (
-    <Grid columnNumber={3}>
+    <Grid columnNumber={4}>
       {data.plantCatalog.map((plant: PlantDetails) => (
         <PlantCard plant={plant} key={plant.id} />
       ))}
