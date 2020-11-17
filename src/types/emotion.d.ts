@@ -9,6 +9,9 @@ declare module '@emotion/react' {
       secondaryAccent: string;
       textDark: string;
       textLight: string;
+      offWhite: string;
+      offWhiteAccent: string;
+      gray: string;
     };
     borderRadius: string;
     borderSize: string;
