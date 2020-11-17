@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { loadableReady } from '@loadable/component';
-import Layout from './modules/Layout';
+import { Layout } from './ui/components';
 import { BrowserRouter } from 'react-router-dom';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';

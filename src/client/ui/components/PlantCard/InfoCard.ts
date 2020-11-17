@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { secondaryGradient, lightGradient } from '../common/gradients';
+import { secondaryGradient, lightGradient } from '../../common/gradients';
 
 export const CardSide = styled.div`
   height: 28.5rem;
