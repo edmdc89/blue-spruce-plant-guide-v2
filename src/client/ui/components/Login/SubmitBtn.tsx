@@ -1,11 +1,16 @@
 /** @jsx jsx */
-import { css, jsx, useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
+import { softShadow } from '../../common/mixins';
 
-type SubmitProps = {
-  width: number;
-  children: JSX.Element;
-};
+const Submit = styled.button`
+  height: 3.3rem;
+  font-size: 1.8rem;
+  color: ${(props) => props.theme.colors.textLight};
+  width: 55%;
+  background-color: ${(props) => props.theme.colors.secondary};
+  border-radius: ${(props) => props.theme.borderRadius};
+  margin-bottom: 1rem;
+  ${softShadow};
+`;
 
-const Submit = ({ children, width }: SubmitProps) => {
-  return <button type="submit">{children}</button>;
-};
+export default Submit;
