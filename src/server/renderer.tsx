@@ -9,7 +9,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from '../config/store';
-import Layout from '../client/modules/Layout';
+import { Layout } from '../client/ui/components';
 import { StaticRouter } from 'react-router';
 import template from './template';
 

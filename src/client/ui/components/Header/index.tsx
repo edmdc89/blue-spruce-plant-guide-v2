@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { css, jsx, useTheme } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
-import { headingStyles } from '../ui/typography/headings';
-import { activeLinkStyles, linkBaseStyles } from '../ui/typography/links';
+import { headingStyles } from '../../typography/headings';
+import { activeLinkStyles, linkBaseStyles } from '../../typography/links';
 
 const headerStyles = css`
   height: 9rem;
