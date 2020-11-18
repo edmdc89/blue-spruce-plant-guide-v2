@@ -2,11 +2,11 @@
 import { useQuery } from '@apollo/client';
 import { GET_RANDOM_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
 import { PlantDetails } from '../../types/app';
-import { PlantCard } from '../ui/components';
-import LoginForm from '../ui/components/Login/LoginForm';
+import { PlantCard } from '../components';
+import LoginForm from '../components/Login/LoginForm';
 import { css, jsx } from '@emotion/react';
-import gridify from '../ui/components/Layout/grid';
-import { rowify } from '../ui/components/Layout/Row';
+import gridify from '../components/Layout/grid';
+import { rowify } from '../components/Layout/Row';
 
 const Home = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_RANDOM_PLANT_PAGE);

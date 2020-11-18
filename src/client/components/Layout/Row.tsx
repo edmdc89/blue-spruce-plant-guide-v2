@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { remify } from '../../common/helpers';
-import theme from '../../common/theme';
-import { clearfix } from '../../common/mixins';
+import { remify } from '../../ui/common/helpers';
+import theme from '../../ui/common/theme';
+import { clearfix } from '../../ui/common/mixins';
 
 export const rowify = (maxWidth?: number): SerializedStyles => css`
   max-width: ${maxWidth ? remify(maxWidth) : remify(theme.maxWidth)};

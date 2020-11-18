@@ -1,10 +1,10 @@
 /** @jsx jsx */
 /** @jsxFrag jsx */
 import { jsx, SerializedStyles } from '@emotion/react';
-import { PlantDetails } from '../../../../types/app';
-import { addBackgroundImage } from '../../common/mixins';
+import { PlantDetails } from '../../../types/app';
+import { addBackgroundImage } from '../../ui/common/mixins';
 import { CardSide, InfoCard } from './InfoCard';
-import { headingStyles } from '../../typography/headings';
+import { headingStyles } from '../../ui/typography/headings';
 
 type PlantCardProps = {
   plant: PlantDetails;
