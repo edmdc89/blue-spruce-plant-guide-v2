@@ -6,11 +6,11 @@ import { PlantCard } from '../components';
 import { jsx } from '@emotion/react';
 import gridify from '../components/Layout/grid';
 import { rowify } from '../components/Layout/Row';
-import LoginSignupForm from '../components/Login';
+import LoginSingupForm from '../components/Login';
 
 const Home = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_RANDOM_PLANT_PAGE);
-  const randomIndex = Math.floor(Math.random() * 19);
+  const randomIndex = Math.floor(Math.random() * 9);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :( </p>;
   return (
@@ -22,7 +22,7 @@ const Home = (): JSX.Element => {
             <PlantCard plant={plant} key={plant.id} />
           ))}
       </section>
-      <LoginSignupForm className="row-cell" />
+      <LoginSingupForm className="row-cell" />
     </section>
   );
 };
