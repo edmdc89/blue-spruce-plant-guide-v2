@@ -1,18 +1,19 @@
 /** @jsx jsx */
-import { css, jsx, useTheme } from '@emotion/react';
+import { jsx } from '@emotion/react';
 import styled from '@emotion/styled';
-import { remify } from '../../common/helpers';
 import LoginInput from './Input';
 import Submit from './SubmitBtn';
 
+interface LoginFormProps {
+  className?: string;
+}
+
 const Form = styled.form`
   height: 100%;
-  width: 50%;
-  max-width: ${(props) => `calc(50% - 2 * ${remify(props.theme.gridGap)})`};
+  width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
-  margin: 0 auto;
   align-items: center;
   background-image: linear-gradient(
     to bottom right,
@@ -20,13 +21,13 @@ const Form = styled.form`
     ${(props) => props.theme.colors.offWhiteAccent}
   );
   border-radius: ${(props) => props.theme.borderRadius};
-  margin-bottom: 1rem;
   padding: 1rem 0;
 `;
 
-const LoginForm = (): JSX.Element => {
+const LoginForm = ({ className }: LoginFormProps): JSX.Element => {
   return (
     <Form
+      className={className}
       onSubmit={(e) => {
         e.preventDefault();
         console.log(e);
