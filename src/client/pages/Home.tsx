@@ -3,10 +3,10 @@ import { useQuery } from '@apollo/client';
 import { GET_RANDOM_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
 import { PlantDetails } from '../../types/app';
 import { PlantCard } from '../components';
-import LoginForm from '../components/Login/LoginForm';
-import { css, jsx } from '@emotion/react';
+import { jsx } from '@emotion/react';
 import gridify from '../components/Layout/grid';
 import { rowify } from '../components/Layout/Row';
+import LoginSignupForm from '../components/Login';
 
 const Home = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_RANDOM_PLANT_PAGE);
@@ -22,7 +22,7 @@ const Home = (): JSX.Element => {
             <PlantCard plant={plant} key={plant.id} />
           ))}
       </section>
-      <LoginForm className="row-cell" />
+      <LoginSignupForm className="row-cell" />
     </section>
   );
 };
