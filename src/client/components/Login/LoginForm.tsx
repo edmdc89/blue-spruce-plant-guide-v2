@@ -3,8 +3,7 @@ import { jsx } from '@emotion/react';
 import LoginInput from './Input';
 import Submit from './SubmitBtn';
 import Form from './Form';
-import { LoginFormProps } from './SignUp';
-import { headingStyles } from '../../ui/typography/headings';
+import { LoginFormMessage, LoginFormProps } from './SignUp';
 
 const LoginForm = ({ className, changeView }: LoginFormProps): JSX.Element => {
   return (
@@ -12,12 +11,10 @@ const LoginForm = ({ className, changeView }: LoginFormProps): JSX.Element => {
       className={className}
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(e);
+        console.log(e.currentTarget);
       }}
     >
-      <h6 css={headingStyles('h6', { inverColor: true, thin: true })}>
-        Not a user? | <span onClick={() => changeView('signup')}>Sing Up</span>
-      </h6>
+      <LoginFormMessage view="login" changeView={changeView} />
       <LoginInput id="email" label="email" />
       <LoginInput password id="password" label="password" />
       <Submit>Submit</Submit>

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const Form = styled.form`
   height: 100%;
   width: 100%;
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
