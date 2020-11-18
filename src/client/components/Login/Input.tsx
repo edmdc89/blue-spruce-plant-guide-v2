@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx, SerializedStyles, Theme, useTheme } from '@emotion/react';
 import { useState } from 'react';
-import { thinShadow } from '../../common/mixins';
+import { thinShadow } from '../../ui/common/mixins';
 
 interface InputProps {
   id: string;

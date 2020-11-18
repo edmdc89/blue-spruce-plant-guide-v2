@@ -1,9 +1,9 @@
 import React from 'react';
 import { Global, css, ThemeProvider } from '@emotion/react';
 import { Route, Switch } from 'react-router-dom';
-import routes from '../../../../config/router/routes';
+import routes from '../../../config/router/routes';
 import Header from '../Header';
-import theme from '../../common/theme';
+import theme from '../../ui/common/theme';
 
 export default function Layout(): JSX.Element {
   return (

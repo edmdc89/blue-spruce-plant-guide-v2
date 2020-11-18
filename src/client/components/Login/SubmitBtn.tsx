@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import styled from '@emotion/styled';
-import { softShadow } from '../../common/mixins';
+import { softShadow } from '../../ui/common/mixins';
 
 const Submit = styled.button`
   height: 3.3rem;

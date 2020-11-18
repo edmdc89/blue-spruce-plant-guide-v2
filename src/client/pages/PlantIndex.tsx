@@ -2,8 +2,8 @@
 import { useQuery } from '@apollo/client';
 import { GET_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
 import { PlantDetails } from '../../types/app';
-import gridify from '../ui/components/Layout/grid';
-import { PlantCard } from '../ui/components';
+import gridify from '../components/Layout/grid';
+import { PlantCard } from '../components';
 import { jsx, css } from '@emotion/react';
 
 const PlantIndex = (): JSX.Element => {
@@ -14,9 +14,7 @@ const PlantIndex = (): JSX.Element => {
 
   return (
     <section
-      css={css`
-        ${gridify(4)}
-      `}
+      css={gridify(4)}
     >
       {data.plantCatalog.map((plant: PlantDetails) => (
         <PlantCard plant={plant} key={plant.id} />
