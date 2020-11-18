@@ -1,9 +1,10 @@
+/** @jsx jsx */
 import { useQuery } from '@apollo/client';
-import React from 'react';
 import { GET_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
 import { PlantDetails } from '../../types/app';
-import Grid from '../ui/common/grid';
+import gridify from '../ui/common/grid';
 import { PlantCard } from '../ui/components';
+import { css, jsx } from '@emotion/react';
 
 const PlantIndex = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_PLANT_PAGE);
@@ -12,11 +13,15 @@ const PlantIndex = (): JSX.Element => {
   if (error) return <p>Error :( </p>;
 
   return (
-    <Grid columnNumber={4}>
+    <section
+      css={css`
+        ${gridify(4)}
+      `}
+    >
       {data.plantCatalog.map((plant: PlantDetails) => (
         <PlantCard plant={plant} key={plant.id} />
       ))}
-    </Grid>
+    </section>
   );
 };
 
