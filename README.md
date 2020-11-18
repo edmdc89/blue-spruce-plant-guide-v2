@@ -44,3 +44,11 @@ of the HTML file is determined by the applications core logic, and the chosen
 framework connects events and actions between the DOM and Virtual DOM. This means
 a web page can remain as responsive as traditional SPA without overloading the
 user's browser resources.
+
+Even though SSR is supported out of the box with frameworks like NextJS and Gatsby,
+I took a more involved approach by setting up the project from scratch. Just like
+v1 was an exploration into the abstractions created by a tool like `create-react-app`,
+this project is the result of a desire to understand the next level of abstractions
+created by these newer frameworks. Though this approach may be slower, I believe
+it improves my ability to adapt to different, but similar, abstractions created
+by the wide assortment of framework available to the modern web developer.
