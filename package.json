@@ -8,7 +8,9 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf dist",
-    "serve": "yarn clean && gulp serve"
+    "serve": "yarn clean && gulp serve",
+    "test:watch": "jest --watch",
+    "test": "jest --forceExit"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
