@@ -25,6 +25,7 @@
     "@types/eslint": "^7.2.4",
     "@types/express": "^4.17.9",
     "@types/gulp": "^4.0.7",
+    "@types/jest": "^26.0.15",
     "@types/loadable__component": "^5.13.1",
     "@types/loadable__server": "^5.12.3",
     "@types/loadable__webpack-plugin": "^5.7.1",
