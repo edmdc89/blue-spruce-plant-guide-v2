@@ -3,7 +3,7 @@ import { jsx } from '@emotion/react';
 import LoginInput from './Input';
 import Submit from './SubmitBtn';
 import Form from './Form';
-import { LoginFormMessage, LoginFormProps } from './SignUp';
+import { clearInputs, LoginFormMessage, LoginFormProps } from './formHelpers';
 
 const LoginForm = ({ className, changeView }: LoginFormProps): JSX.Element => {
   return (
@@ -11,7 +11,7 @@ const LoginForm = ({ className, changeView }: LoginFormProps): JSX.Element => {
       className={className}
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(e.currentTarget);
+        clearInputs(e);
       }}
     >
       <LoginFormMessage view="login" changeView={changeView} />
