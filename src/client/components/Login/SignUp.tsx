@@ -8,7 +8,7 @@ interface LoginFormProps {
   className?: string;
 }
 
-const LoginForm = ({ className }: LoginFormProps): JSX.Element => {
+const SignupForm = ({ className }: LoginFormProps): JSX.Element => {
   return (
     <Form
       className={className}
@@ -17,6 +17,7 @@ const LoginForm = ({ className }: LoginFormProps): JSX.Element => {
         console.log(e);
       }}
     >
+      <LoginInput id="name" label="name" />
       <LoginInput id="email" label="email" />
       <LoginInput password id="password" label="password" />
       <Submit>Submit</Submit>
@@ -24,4 +25,4 @@ const LoginForm = ({ className }: LoginFormProps): JSX.Element => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
