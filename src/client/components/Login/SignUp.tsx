@@ -21,7 +21,7 @@ const SignupForm = ({ className, changeView }: LoginFormProps): JSX.Element => {
       }}
     >
       <h6 css={headingStyles('h6', { inverColor: true, thin: true })}>
-        Already a User? | <button onClick={() => changeView('login')}>Login</button>
+        Already a User? | <span onClick={() => changeView('login')}>Login</span>
       </h6>
       <LoginInput id="name" label="name" />
       <LoginInput id="email" label="email" />
