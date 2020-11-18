@@ -3,10 +3,7 @@ import { jsx } from '@emotion/react';
 import LoginInput from './Input';
 import Submit from './SubmitBtn';
 import Form from './Form';
-
-interface LoginFormProps {
-  className?: string;
-}
+import { LoginFormProps } from './SignUp';
 
 const LoginForm = ({ className }: LoginFormProps): JSX.Element => {
   return (
