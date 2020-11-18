@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, SerializedStyles } from '@emotion/react';
-import { remify } from '../common/helpers';
-import theme from './theme';
+import { remify } from '../../common/helpers';
+import theme from '../../common/theme';
 
 const gridify = (columnNumber: number, maxWidth?: number): SerializedStyles => css`
   display: grid;

@@ -2,9 +2,9 @@
 import { useQuery } from '@apollo/client';
 import { GET_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
 import { PlantDetails } from '../../types/app';
-import gridify from '../ui/common/grid';
+import gridify from '../ui/components/Layout/grid';
 import { PlantCard } from '../ui/components';
-import { css, jsx } from '@emotion/react';
+import { jsx, css } from '@emotion/react';
 
 const PlantIndex = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_PLANT_PAGE);
