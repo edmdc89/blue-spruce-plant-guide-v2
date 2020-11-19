@@ -64,3 +64,9 @@ that allow for the exploration of the API's whole type system.
 These combined features help front- and back-end developers create software
 synchronously and talk about the API decoupled from teams' preferred languages
 increasing overall development speed.
+
+#### Typescript
+
+Typescript is an open-sourced language that builds on JavaScript by adding static
+type definitions. Lately, it has been my go-to choice for projects because it
+provides improved editor tooling with which I can fully explore new technologies.
