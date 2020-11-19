@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx, SerializedStyles, Theme, useTheme } from '@emotion/react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { thinShadow } from '../../ui/common/mixins';
 
 interface InputProps {
