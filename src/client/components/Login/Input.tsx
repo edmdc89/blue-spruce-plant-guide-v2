@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx, SerializedStyles, Theme, useTheme } from '@emotion/react';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { thinShadow } from '../../ui/common/mixins';
 
 interface InputProps {
@@ -9,6 +9,8 @@ interface InputProps {
   password?: boolean;
   noLabelDisplay?: boolean;
   className?: string;
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
 }
 
 const baseInputStyles = (theme: Theme, noLabelDisplay?: boolean): SerializedStyles => css`
@@ -42,18 +44,24 @@ const baseInputStyles = (theme: Theme, noLabelDisplay?: boolean): SerializedStyl
   }
 `;
 
-const LoginInput = (props: InputProps): JSX.Element => {
+const LoginInput = ({
+  id,
+  label,
+  className,
+  password,
+  noLabelDisplay,
+  value,
+  setValue,
+}: InputProps): JSX.Element => {
   const theme = useTheme();
-  const { id, label, className, password, noLabelDisplay } = props;
-  const [inputValue, setInputValue] = useState('');
   return (
     <div css={baseInputStyles(theme, noLabelDisplay)} className={className}>
       {!noLabelDisplay && <label htmlFor={id}>{label}:</label>}
       <input
         id={id}
-        value={inputValue}
+        value={value}
         type={password ? 'password' : 'text'}
-        onChange={(event) => setInputValue(event.target.value)}
+        onChange={(event) => setValue(event.target.value)}
         placeholder={noLabelDisplay ? label : ''}
         aria-label={id}
       />
