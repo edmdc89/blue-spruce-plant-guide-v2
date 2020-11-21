@@ -44,7 +44,6 @@ const run = () => {
   })
     .on('start', () => {
       console.log('Starting Client Dev Server...');
-      clientDevServer;
     })
     .on('restart', () => console.log('Restarted!'))
     .on('quit', () => {

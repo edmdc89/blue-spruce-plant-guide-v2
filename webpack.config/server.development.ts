@@ -14,8 +14,15 @@ const serverConfig: webpack.Configuration = merge(common, {
   output: {
     path: path.join(__dirname, '..', 'dist'),
     filename: '[name].js',
+    publicPath: 'http://localhost:8082/',
   },
   target: 'node',
+  devServer: {
+    port: 8082,
+    hot: true,
+    writeToDisk: true,
+    publicPath: 'http://localhost:8082/',
+  },
   node: {
     __dirname: false,
   },

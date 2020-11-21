@@ -7,7 +7,6 @@ import { headingStyles } from '../../ui/typography/headings';
 import { useMutation } from '@apollo/client';
 import { USER_LOGIN, USER_SIGNUP } from '../../../config/store/api/user/mutations';
 import { useState } from 'react';
-import { useApolloClient } from '@apollo/client';
 
 interface LoginFormProps {
   className?: string;
@@ -18,7 +17,6 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const client = useApolloClient();
   const [userLogin, { data: loginData, error: loginError }] = useMutation(USER_LOGIN);
   const [userSignup, { data: signupData, error: signupError }] = useMutation(USER_SIGNUP);
 
