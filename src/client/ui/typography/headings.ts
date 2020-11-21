@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import theme from '../common/theme';
+import { theme } from '../common/theme';
 
 type HeaderLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 

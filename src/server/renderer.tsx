@@ -9,9 +9,9 @@ import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from '../config/store';
-import { Layout } from '../client/components';
 import { StaticRouter } from 'react-router';
 import template from './template';
+import { Root } from '../client/pages';
 
 type Context = {
   url?: string;
@@ -35,7 +35,7 @@ export default async function renderer(
       <ApolloProvider client={apolloClient}>
         <StaticRouter location={req.url} context={context}>
           <CacheProvider value={cache}>
-            <Layout />
+            <Root />
           </CacheProvider>
         </StaticRouter>
       </ApolloProvider>
