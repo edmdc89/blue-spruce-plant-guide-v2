@@ -47,11 +47,13 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
     }
   };
 
-  const handleSubmission = (): void => {
-    isLoginView
-      ? userLogin({ variables: { email, password } })
-      : userSignup({ variables: { name, email, password } });
+  const handleSubmission = async (): Promise<any> => {
+    const user = isLoginView
+      ? await userLogin({ variables: { email, password } })
+      : await userSignup({ variables: { name, email, password } });
     clearInputs();
+    console.log(user);
+    return user;
   };
 
   return (

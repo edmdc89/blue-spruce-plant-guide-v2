@@ -6,6 +6,10 @@ export const USER_LOGIN = gql`
       _id
       name
       email
+      token {
+        token
+        expiration
+      }
     }
   }
 `;
@@ -16,6 +20,10 @@ export const USER_SIGNUP = gql`
       _id
       name
       email
+      token {
+        token
+        expiration
+      }
     }
   }
 `;
