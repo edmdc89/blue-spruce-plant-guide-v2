@@ -8,8 +8,8 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf dist",
-    "devBuild:client": "webpack serve --config ./webpack.config/client.development.ts",
-    "devBuild:server": "webpack serve --config ./webpack.config/server.development.ts",
+    "devBuild:client": "webpack serve --config ./webpack.config/client.development.ts --open --hot",
+    "devBuild:server": "webpack --config ./webpack.config/server.development.ts --watch",
     "devStart": "nodemon dist/server.js",
     "serve": "yarn clean && run-p -l devBuild:* devStart",
     "test:watch": "jest --watch",
