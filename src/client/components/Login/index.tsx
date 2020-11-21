@@ -47,13 +47,18 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
     }
   };
 
-  const handleSubmission = async (): Promise<any> => {
-    const user = isLoginView
-      ? await userLogin({ variables: { email, password } })
-      : await userSignup({ variables: { name, email, password } });
+  const handleLoginSubmission = async (): Promise<void> => {
+    const { data } = await userLogin({ variables: { email, password } });
+    localStorage.setItem('userToken', JSON.stringify(data.userLogIn.token));
+    console.log(localStorage.getItem('userToken'));
     clearInputs();
-    console.log(user);
-    return user;
+  };
+
+  const handleSignupSubmission = async (): Promise<void> => {
+    const { data } = await userSignup({ variables: { name, email, password } });
+    localStorage.setItem('userToken', JSON.stringify(data.userSignUp.token));
+    console.log(localStorage.getItem('userToken'));
+    clearInputs();
   };
 
   return (
@@ -61,7 +66,7 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
       className={className}
       onSubmit={(e) => {
         e.preventDefault();
-        handleSubmission();
+        isLoginView ? handleLoginSubmission() : handleSignupSubmission();
       }}
     >
       <LoginFormMessage />
