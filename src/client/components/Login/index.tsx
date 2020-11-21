@@ -50,14 +50,12 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
   const handleLoginSubmission = async (): Promise<void> => {
     const { data } = await userLogin({ variables: { email, password } });
     localStorage.setItem('userToken', JSON.stringify(data.userLogIn.token));
-    console.log(localStorage.getItem('userToken'));
     clearInputs();
   };
 
   const handleSignupSubmission = async (): Promise<void> => {
     const { data } = await userSignup({ variables: { name, email, password } });
     localStorage.setItem('userToken', JSON.stringify(data.userSignUp.token));
-    console.log(localStorage.getItem('userToken'));
     clearInputs();
   };
 

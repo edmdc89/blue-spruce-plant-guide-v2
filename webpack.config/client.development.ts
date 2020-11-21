@@ -29,7 +29,7 @@ const clientConfig: WebpackConfiguration = merge(common, {
     port: 8081,
     hot: true,
     publicPath: 'http://localhost:8081/',
-    watchContentBase: true,
+    allowedHosts: ['http://localhost:8080/'],
   },
   plugins: [
     new HotModuleReplacementPlugin(),
