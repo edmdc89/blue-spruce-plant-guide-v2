@@ -4,8 +4,8 @@ import { GET_RANDOM_PLANT_PAGE } from '../../config/store/api/queries/plantIndex
 import { PlantDetails } from '../../types/app';
 import { PlantCard } from '../components';
 import { jsx } from '@emotion/react';
-import gridify from '../components/Layout/grid';
-import { rowify } from '../components/Layout/Row';
+import gridify from '../ui/mixins/grid';
+import { rowify } from '../ui/mixins/Row';
 import LoginSingupForm from '../components/Login';
 
 const Home = (): JSX.Element => {

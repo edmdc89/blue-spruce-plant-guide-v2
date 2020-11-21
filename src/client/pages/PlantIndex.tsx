@@ -2,7 +2,7 @@
 import { useQuery } from '@apollo/client';
 import { GET_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
 import { PlantDetails } from '../../types/app';
-import gridify from '../components/Layout/grid';
+import gridify from '../ui/mixins/grid';
 import { PlantCard } from '../components';
 import { jsx } from '@emotion/react';
 

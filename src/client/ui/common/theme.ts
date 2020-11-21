@@ -1,6 +1,6 @@
-import { Theme } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 
-const theme: Theme = {
+export const theme: Theme = {
   colors: {
     primary: 'RGBA(28,49,68,1)',
     primaryAccent: 'rgba(69,133,136,1)',
@@ -22,4 +22,23 @@ const theme: Theme = {
   },
 };
 
-export default theme;
+export const globalStyles = css`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    box-sizing: border-box;
+    overflow-y: hidden;
+    font-family: 'Ubuntu', sans-serif;
+    background: ${theme.colors.primary};
+    height: 100vh;
+    overflow-y: scroll;
+  }
+`;
