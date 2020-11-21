@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { loadableReady } from '@loadable/component';
-import { Layout } from './components';
 import { BrowserRouter } from 'react-router-dom';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from '../config/store';
 import { IS_LOGGED_IN } from '../config/store/api/user/queries';
+import { Root } from './pages';
 
 const render = (App: () => JSX.Element) => {
   const cache = createCache({ key: 'custom' });
@@ -34,4 +34,4 @@ const render = (App: () => JSX.Element) => {
   ReactDOM.hydrate(Client, root);
 };
 
-loadableReady(() => render(Layout));
+loadableReady(() => render(Root));
