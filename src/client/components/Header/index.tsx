@@ -39,7 +39,7 @@ const Header = (): JSX.Element => {
           ]}
           to="/plant-index"
         >
-          Plant Index
+          Plant Catalog
         </NavLink>
         <NavLink
           css={[

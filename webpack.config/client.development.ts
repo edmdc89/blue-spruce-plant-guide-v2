@@ -4,6 +4,8 @@ import { Configuration as WebpackConfiguration } from 'webpack';
 import { merge } from 'webpack-merge';
 import common from './common';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import { HotModuleReplacementPlugin } from 'webpack';
 
 const LoadablePlugin = require('@loadable/webpack-plugin');
 
@@ -14,16 +16,24 @@ const clientConfig: WebpackConfiguration = merge(common, {
       import: './src/client/index.tsx',
       dependOn: 'react-vendors',
     },
-    'react-vendors': ['react', 'react-dom'],
+    'react-vendors': ['react', 'react-dom', 'react-refresh/runtime'],
   },
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   target: 'web',
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
     filename: 'js/[name].js',
     publicPath: 'http://localhost:8081/',
   },
+  devServer: {
+    port: 8081,
+    hot: true,
+    publicPath: 'http://localhost:8081/',
+    watchContentBase: true,
+  },
   plugins: [
+    new HotModuleReplacementPlugin(),
+    new ReactRefreshPlugin(),
     new ForkTsCheckerWebpackPlugin({
       async: false,
       eslint: {
