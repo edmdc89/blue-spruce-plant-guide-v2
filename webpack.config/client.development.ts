@@ -21,7 +21,7 @@ const clientConfig: WebpackConfiguration = merge(common, {
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
     filename: 'js/[name].js',
-    publicPath: '/',
+    publicPath: 'http://localhost:8081/',
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
@@ -30,7 +30,7 @@ const clientConfig: WebpackConfiguration = merge(common, {
         files: './src/**/*.{ts,tsx,js,jsx}',
       },
     }),
-    new LoadablePlugin(),
+    new LoadablePlugin({ writeToDisk: true }),
   ],
 });
 

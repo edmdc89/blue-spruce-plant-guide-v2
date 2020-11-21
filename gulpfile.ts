@@ -1,21 +1,20 @@
 import path from 'path';
 import { parallel } from 'gulp';
 import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
 import clientDevConfig from './webpack.config/client.development';
 import serverDevConfig from './webpack.config/server.development';
 import { onBuild } from './webpack.config/helpers';
 import nodemon from 'nodemon';
 
-const clientWatcher = webpack(clientDevConfig).watch(
-  {
-    aggregateTimeout: 300,
-    ignored: /node_modules/,
-  },
-  (err, stats) => {
-    onBuild('Client')(err, stats);
-    nodemon.restart();
-  },
-);
+const clientCompiler = webpack(clientDevConfig);
+
+const clientDevServer = new WebpackDevServer(clientCompiler, {
+  port: 8081,
+  hot: true,
+  publicPath: 'http://localhost:8081/',
+  watchContentBase: true,
+});
 
 const serverWatcher = webpack(serverDevConfig).watch(
   {
@@ -28,7 +27,8 @@ const serverWatcher = webpack(serverDevConfig).watch(
   },
 );
 
-const clientWatch = () => clientWatcher;
+const runClientDevServer = () =>
+  clientDevServer.listen(8081, () => console.log('Client Dev Server Started!!'));
 
 const serverWatch = () => serverWatcher;
 
@@ -42,12 +42,16 @@ const run = () => {
     watch: ['foo/'],
     ext: 'noop',
   })
+    .on('start', () => {
+      console.log('Starting Client Dev Server...');
+      clientDevServer;
+    })
     .on('restart', () => console.log('Restarted!'))
     .on('quit', () => {
-      clientWatcher.close(() => console.log('Client Watcher ended!'));
+      clientDevServer.close(() => console.log('Client Watcher ended!'));
       serverWatcher.close(() => console.log('Server Watcher ended!'));
     });
   console.log('Server - exited!');
 };
 
-exports.serve = parallel(clientWatch, serverWatch, run);
+exports.serve = parallel(serverWatch, runClientDevServer, run);
