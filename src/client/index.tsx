@@ -5,33 +5,30 @@ import { BrowserRouter } from 'react-router-dom';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
-import { apolloClient } from '../config/store';
-import { IS_LOGGED_IN } from '../config/store/api/user/queries';
+import { useApolloClient } from '../config/store';
+import { CookiesProvider } from 'react-cookie';
+// import { IS_LOGGED_IN } from '../config/store/api/user/queries';
 import { Root } from './pages';
 
 const render = (App: () => JSX.Element) => {
-  const cache = createCache({ key: 'custom' });
-  const token = localStorage.getItem('userToken');
-  if (token) {
-    apolloClient.writeQuery({
-      query: IS_LOGGED_IN,
-      data: {
-        isLoggedIn: !!window.localStorage.getItem('userToken'),
-      },
-    });
-  }
   const root = document.getElementById('root');
-  const Client = (
-    <ApolloProvider client={apolloClient}>
-      <BrowserRouter>
-        <CacheProvider value={cache}>
-          <App />
-        </CacheProvider>
-      </BrowserRouter>
-    </ApolloProvider>
-  );
+  const Client = () => {
+    const cache = createCache({ key: 'custom' });
+    const apolloClient = useApolloClient();
+    return (
+      <ApolloProvider client={apolloClient}>
+        <CookiesProvider>
+          <BrowserRouter>
+            <CacheProvider value={cache}>
+              <App />
+            </CacheProvider>
+          </BrowserRouter>
+        </CookiesProvider>
+      </ApolloProvider>
+    );
+  };
 
-  ReactDOM.hydrate(Client, root);
+  ReactDOM.hydrate(<Client />, root);
 };
 
 loadableReady(() => render(Root));

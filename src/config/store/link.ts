@@ -1,6 +1,5 @@
 import fetch from 'cross-fetch';
 import { HttpLink, ApolloLink } from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
 
 const httpLink = new HttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -19,4 +18,4 @@ const authMiddleware = (authToken: string): ApolloLink =>
     return forward(operation);
   });
 
-export default [httpLink, authMiddleware];
+export { httpLink, authMiddleware };
