@@ -26,7 +26,6 @@ export default async function renderer(
   const cache = createCache({ key });
   const { extractCritical } = createEmotionServer(cache);
   try {
-    console.log(req.headers);
     const extractor = new ChunkExtractor({
       statsFile,
       entrypoints: ['client', 'react-vendors'],
