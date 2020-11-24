@@ -1,16 +1,11 @@
 import { ApolloClient } from '@apollo/client';
-import { httpLink, authMiddleware } from './link';
 
 import { cache } from './cache';
-import { useAuthToken } from '../../client/utils/useAuthToken';
+import httpLink from './link';
 
-export const useApolloClient = (): any => {
-  const [authToken] = useAuthToken();
-
-  return new ApolloClient({
-    ssrMode: true,
-    cache: cache,
-    link: authMiddleware(authToken).concat(httpLink),
-    connectToDevTools: true,
-  });
-};
+export const apolloClient = new ApolloClient({
+  ssrMode: true,
+  cache: cache,
+  link: httpLink,
+  connectToDevTools: true,
+});

@@ -8,8 +8,7 @@ import { CacheProvider } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
 import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
-import { CookiesProvider } from 'react-cookie';
-import { useApolloClient } from '../config/store';
+import { apolloClient } from '../config/store';
 import { StaticRouter } from 'react-router';
 import template from './template';
 import { Root } from '../client/pages';
@@ -23,31 +22,24 @@ export default async function renderer(
   res: express.Response,
 ): Promise<string | undefined> {
   const statsFile = path.resolve('dist/loadable-stats.json');
+  const key = 'custom';
+  const cache = createCache({ key });
+  const { extractCritical } = createEmotionServer(cache);
   try {
-    const key = 'custom';
-    const cache = createCache({ key });
-    const { extractCritical } = createEmotionServer(cache);
     const extractor = new ChunkExtractor({
       statsFile,
       entrypoints: ['client', 'react-vendors'],
     });
     const context: Context = {};
-
-    const Client = () => {
-      const apolloClient = useApolloClient();
-      return (
-        <ApolloProvider client={apolloClient}>
-          {/* @ts-ignore */}
-          <CookiesProvider cookies={req.universalCookies}>
-            <StaticRouter location={req.url} context={context}>
-              <CacheProvider value={cache}>
-                <Root />
-              </CacheProvider>
-            </StaticRouter>
-          </CookiesProvider>
-        </ApolloProvider>
-      );
-    };
+    const Client = (
+      <ApolloProvider client={apolloClient}>
+        <StaticRouter location={req.url} context={context}>
+          <CacheProvider value={cache}>
+            <Root />
+          </CacheProvider>
+        </StaticRouter>
+      </ApolloProvider>
+    );
 
     if (context.url) {
       res.writeHead(301, {
@@ -55,7 +47,7 @@ export default async function renderer(
       });
       res.end();
     } else {
-      const jsx = extractor.collectChunks(<Client />);
+      const jsx = extractor.collectChunks(Client);
       const initialState = apolloClient.extract();
       const { html, css, ids } = extractCritical(renderToString(jsx));
       const styleTag = `<style data-emotion="${key} ${ids.join(' ')}">${css}</style>`;
