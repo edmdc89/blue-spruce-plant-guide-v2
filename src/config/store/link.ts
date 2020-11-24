@@ -1,22 +1,22 @@
 import fetch from 'cross-fetch';
-import { createHttpLink } from '@apollo/client';
+import { HttpLink, ApolloLink } from '@apollo/client';
 // import { setContext } from '@apollo/client/link/context';
 
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
   uri: 'http://localhost:4000/graphql',
   fetch,
 });
 
-// const authLink = setContext((_, { headers }) => {
-//   if (window) {
-//     const token = window.localStorage.getItem('userToken');
-//     return {
-//       headers: {
-//         ...headers,
-//         authorization: token ? `Bearer ${JSON.parse(token).token}` : '',
-//       },
-//     };
-//   }
-// });
+const authMiddleware = (authToken: string): ApolloLink =>
+  new ApolloLink((operation, forward) => {
+    if (authToken) {
+      operation.setContext({
+        headers: {
+          authorization: `Bearer ${authToken}`,
+        },
+      });
+    }
+    return forward(operation);
+  });
 
-export default httpLink;
+export default [httpLink, authMiddleware];
