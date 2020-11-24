@@ -1,11 +1,11 @@
 import { ApolloClient } from '@apollo/client';
 
 import { cache } from './cache';
-import httpLink from './link';
+import Link from './link';
 
 export const apolloClient = new ApolloClient({
   ssrMode: true,
   cache: cache,
-  link: httpLink,
+  link: Link,
   connectToDevTools: true,
 });
