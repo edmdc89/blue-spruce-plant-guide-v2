@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { Global, jsx, ThemeProvider } from '@emotion/react';
 import Home from './Home';
-import PlantIndex from './PlantIndex';
-import Quiz from './Quiz';
+import PlantIndex from './Auth/PlantIndex';
+import Quiz from './Auth/Quiz';
 import routes from '../../config/router/routes';
 import Header from '../components/Header/index';
 import { theme, globalStyles } from '../ui/common/theme';

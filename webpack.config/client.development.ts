@@ -14,9 +14,17 @@ const clientConfig: WebpackConfiguration = merge(common, {
   entry: {
     client: {
       import: './src/client/index.tsx',
-      dependOn: 'react-vendors',
+      dependOn: ['react-vendors'],
     },
-    'react-vendors': ['react', 'react-dom', 'react-refresh/runtime'],
+    'react-vendors': [
+      'react',
+      'react-dom',
+      'react-helmet',
+      'react-router-dom',
+      '@apollo/client',
+      'graphql',
+      'react-refresh/runtime',
+    ],
   },
   devtool: 'eval-source-map',
   target: 'web',

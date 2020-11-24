@@ -37,8 +37,8 @@ whole new file with updated content. This limitation is what initially lead to
 the development of frameworks rendering content on the client-side.
 
 Recently, SSR has seen a resurgence as frameworks mature to support it. Just
-like with traditional SSR, a server can fetch required data, construct an HTML
-file, and send it to the user. When used with modern frameworks, the application's
+like with traditional SSR, a server can fetch required data, construct HTML file,
+and send it to the user. When used with modern frameworks, the application's
 core logic determines the content of the HTML file, and the chosen framework
 connects events and actions between the DOM and Virtual DOM. By combining SSR
 with modern frameworks, a web page can provide the same rich experience as
