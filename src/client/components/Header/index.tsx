@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { css, jsx, useTheme } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 import { IS_LOGGED_IN } from '../../../config/store/api/user/queries';
+import { loggedInStatus } from '../../../config/store/cache';
 import { headingStyles } from '../../ui/typography/headings';
 import { activeLinkStyles, linkBaseStyles } from '../../ui/typography/links';
 
@@ -19,10 +20,12 @@ const headerStyles = css`
 
 const Header = (): JSX.Element => {
   const { data } = useQuery(IS_LOGGED_IN);
-  if (data) {
-    console.log(data);
-  }
   const theme = useTheme();
+  const logUserOut = (): void => {
+    window.localStorage.clear();
+    loggedInStatus(false);
+  };
+
   return (
     <header
       css={css`
@@ -61,6 +64,16 @@ const Header = (): JSX.Element => {
           >
             Quiz
           </NavLink>
+          <button
+            css={css`
+              ${headingStyles('h4')}
+              border: 0;
+              background-color: ${theme.colors.secondaryAccent};
+            `}
+            onClick={logUserOut}
+          >
+            LogOut
+          </button>
         </nav>
       )}
     </header>
