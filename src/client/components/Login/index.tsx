@@ -7,6 +7,7 @@ import { headingStyles } from '../../ui/typography/headings';
 import { useMutation } from '@apollo/client';
 import { USER_LOGIN, USER_SIGNUP } from '../../../config/store/api/user/mutations';
 import { useState } from 'react';
+import { loggedInStatus } from '../../../config/store/cache';
 
 interface LoginFormProps {
   className?: string;
@@ -50,12 +51,14 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
   const handleLoginSubmission = async (): Promise<void> => {
     const { data } = await userLogin({ variables: { email, password } });
     localStorage.setItem('userToken', JSON.stringify(data.userLogIn.token));
+    loggedInStatus(true);
     clearInputs();
   };
 
   const handleSignupSubmission = async (): Promise<void> => {
     const { data } = await userSignup({ variables: { name, email, password } });
     localStorage.setItem('userToken', JSON.stringify(data.userSignUp.token));
+    loggedInStatus(true);
     clearInputs();
   };
 
