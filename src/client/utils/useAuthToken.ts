@@ -2,10 +2,6 @@ import { useCookies } from 'react-cookie';
 
 const TOKEN_NAME = 'authToken';
 
-interface IAuthCookie {
-  [name: string]: string;
-}
-
 export const useAuthToken = (): [
   authToken: string,
   setAuthToken: (token: string) => void,
