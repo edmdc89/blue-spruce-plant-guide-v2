@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useQuery } from '@apollo/client';
 import { css, jsx, useTheme } from '@emotion/react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { IS_LOGGED_IN } from '../../../config/store/api/user/queries';
 import { loggedInStatus } from '../../../config/store/cache';
 import { headingStyles } from '../../ui/typography/headings';
@@ -21,6 +21,7 @@ const headerStyles = css`
 const Header = (): JSX.Element => {
   const { data } = useQuery(IS_LOGGED_IN);
   const theme = useTheme();
+
   const logUserOut = (): void => {
     window.localStorage.clear();
     loggedInStatus(false);
