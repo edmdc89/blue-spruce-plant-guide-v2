@@ -9,6 +9,7 @@ import { rowify } from '../ui/mixins/Row';
 import LoginSingupForm from '../components/Login';
 import { IS_LOGGED_IN } from '../../config/store/api/user/queries';
 import { Redirect } from 'react-router-dom';
+import { Loading } from '../components/Common/Loading';
 
 const Home = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_RANDOM_PLANT_PAGE);
@@ -17,19 +18,21 @@ const Home = (): JSX.Element => {
   } = useQuery(IS_LOGGED_IN);
 
   const randomIndex = Math.floor(Math.random() * 9);
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :( </p>;
-  return isLoggedIn ? (
-    <Redirect to="/plant-index" />
-  ) : (
+  if (isLoggedIn) return <Redirect to="/plant-index" />;
+  return (
     <section css={rowify()}>
-      <section className="row-cell" css={gridify(2)}>
-        {data.randomPlantCatalog
-          .slice(randomIndex, randomIndex + 4)
-          .map((plant: PlantDetails) => (
-            <PlantCard plant={plant} key={plant.id} />
-          ))}
-      </section>
+      {loading ? (
+        <Loading className="row-cell" />
+      ) : (
+        <section className="row-cell" css={gridify(2)}>
+          {data.randomPlantCatalog
+            .slice(randomIndex, randomIndex + 4)
+            .map((plant: PlantDetails) => (
+              <PlantCard plant={plant} key={plant.id} />
+            ))}
+        </section>
+      )}
       <LoginSingupForm className="row-cell" />
     </section>
   );
