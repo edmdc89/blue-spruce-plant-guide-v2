@@ -9,7 +9,7 @@ export const cache = new InMemoryCache({
             return loggedInStatus();
           },
         },
-        currentQuiz: {
+        quizTracker: {
           read() {
             return quizTracker();
           },
@@ -23,7 +23,7 @@ const quizTrackerDefault = {
   round: 0,
   quizLength: 10,
   score: 0,
-  currentQuiz: {},
+  currentQuiz: [],
 };
 
 export const loggedInStatus = makeVar(false);
