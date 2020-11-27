@@ -12,9 +12,9 @@ export interface IQuizChoice {
   answerID: PlantDetails;
 }
 
-export interface QuizInfo {
+export interface IQuizInfo {
   round: number;
   quizLength: number;
-  quizScore: number;
-  currentQuiz: QuizChoice[];
+  score: number;
+  currentQuiz?: QuizChoice[];
 }
