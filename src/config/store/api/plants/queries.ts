@@ -39,3 +39,9 @@ export const GET_RANDOM_QUIZ = gql`
     }
   }
 `;
+
+export const GET_QUIZ_TRACKER = gql`
+  query tracker {
+    quizTracker @client
+  }
+`;
