@@ -15,7 +15,7 @@ const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
   return (
     <InfoCard>
       <CardSide className="front">
-        <div css={addBackgroundImage(plant.imageUrl)}> </div>
+        {plant.imageUrl && <div css={addBackgroundImage(plant.imageUrl)}> </div>}
         <h4 css={headingStyles('h4')}>{plant.commonName}</h4>
       </CardSide>
       <CardSide className="back">
