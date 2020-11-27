@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useQuery } from '@apollo/client';
 import { css, jsx, useTheme } from '@emotion/react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { IS_LOGGED_IN } from '../../../config/store/api/user/queries';
 import { loggedInStatus } from '../../../config/store/cache';
 import { headingStyles } from '../../ui/typography/headings';

@@ -2,14 +2,14 @@ export interface PlantDetails {
   id: number;
   commonName?: string;
   scientificName: string;
-  imageUrl: string;
+  imageUrl?: string;
   familyCommonName?: string;
-  familyScientificName: string;
+  familyScientificName?: string;
 }
 
-export interface QuizChoice {
-  roundAnswers: PlantDetails[];
-  correctAnswer: PlantDetails;
+export interface IQuizChoice {
+  choices: PlantDetails[];
+  answerID: PlantDetails;
 }
 
 export interface QuizInfo {
