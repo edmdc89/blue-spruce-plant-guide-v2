@@ -26,8 +26,16 @@ export const GET_RANDOM_PLANT_PAGE = gql`
   }
 `;
 
-export const GET_CURRENT_QUIZ = gql`
-  query GetCurrentQuiz {
-    currentQuiz @client
+export const GET_RANDOM_QUIZ = gql`
+  query GetRandomPlantQuiz {
+    getPlantQuiz {
+      answerID
+      choices {
+        id
+        commonName
+        scientificName
+        imageUrl
+      }
+    }
   }
 `;

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { useQuery } from '@apollo/client';
-import { GET_PLANT_PAGE } from '../../../config/store/api/queries/plantIndex';
+import { GET_PLANT_PAGE } from '../../../config/store/api/plants/queries';
 import { PlantDetails } from '../../../types/app';
 import gridify from '../../ui/mixins/grid';
 import { PlantCard } from '../../components';

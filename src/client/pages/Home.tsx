@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { useQuery } from '@apollo/client';
-import { GET_RANDOM_PLANT_PAGE } from '../../config/store/api/queries/plantIndex';
+import { GET_RANDOM_PLANT_PAGE } from '../../config/store/api/plants/queries';
 import { PlantDetails } from '../../types/app';
 import { PlantCard } from '../components';
 import { jsx } from '@emotion/react';
