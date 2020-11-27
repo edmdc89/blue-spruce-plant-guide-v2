@@ -1,7 +1,8 @@
 import React from 'react';
+import { QuizCard } from '../../components/QuizCard';
 
 const Quiz = (): JSX.Element => {
-  return <h2>Hello World</h2>;
+  return <QuizCard />;
 };
 
 export default Quiz;
