@@ -28,7 +28,7 @@ export const GET_RANDOM_PLANT_PAGE = gql`
 
 export const GET_RANDOM_QUIZ = gql`
   query GetRandomPlantQuiz {
-    getPlantQuiz {
+    plantQuiz {
       answerID
       choices {
         id
@@ -37,11 +37,5 @@ export const GET_RANDOM_QUIZ = gql`
         imageUrl
       }
     }
-  }
-`;
-
-export const GET_QUIZ_TRACKER = gql`
-  query tracker {
-    quizTracker @client
   }
 `;
