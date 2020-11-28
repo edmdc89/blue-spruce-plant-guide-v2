@@ -3,7 +3,7 @@ import { GET_RANDOM_QUIZ } from '../../../config/store/api/plants/queries';
 import { quizTracker } from '../../../config/store/cache';
 import { IQuizInfo } from '../../../types/app';
 
-export const useQuizTracker = (): {
+export const useQuizTrackersetRound = (): {
   loading: boolean;
   error?: ApolloError;
   quizTracker: ReactiveVar<IQuizInfo>;
