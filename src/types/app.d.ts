@@ -9,7 +9,7 @@ export interface PlantDetails {
 
 export interface IQuizChoice {
   choices: PlantDetails[];
-  answerID: PlantDetails;
+  answerID: number;
 }
 
 export interface IQuizInfo {
