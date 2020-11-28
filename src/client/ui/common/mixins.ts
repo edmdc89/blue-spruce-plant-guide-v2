@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from '@emotion/react';
 
-export const addBackgroundImage = (url: string): SerializedStyles => css`
+export const addBackgroundImage = (url?: string): SerializedStyles => css`
   background-size: cover;
   height: 24rem;
   background-blend-mode: screen;

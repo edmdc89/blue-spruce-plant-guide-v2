@@ -13,13 +13,19 @@ const Quiz = (): JSX.Element => {
   const [score, setScore] = useState(0);
   const { plantQuiz } = data || {};
   if (error) return <h2>{error.message}</h2>;
+  const checkUserAnswer = (userAnswerID: number) => {
+    if (userAnswerID === plantQuiz[round].answerID) {
+      setScore(score + 1);
+      console.log(round);
+    }
+  };
   return loading ? (
     <Loading />
   ) : (
     <QuizCard
       changeRound={() => setRound(round + 1)}
-      scoreHandler={setScore}
-      currentQuestion={plantQuiz[0]}
+      scoreHandler={(userAnswerID) => checkUserAnswer(userAnswerID)}
+      currentQuestion={plantQuiz[round]}
     />
   );
 };
