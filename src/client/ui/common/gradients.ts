@@ -12,8 +12,8 @@ export const primaryGradient = css`
 export const secondaryGradient = css`
   background-image: linear-gradient(
     to bottom right,
-    ${theme.colors.secondary},
-    ${theme.colors.secondaryAccent}
+    ${theme.colors.secondaryAccent},
+    ${theme.colors.secondary}
   );
 `;
 

@@ -1,4 +1,4 @@
-export interface PlantDetails {
+export interface IPlantDetails {
   id: number;
   commonName?: string;
   scientificName: string;

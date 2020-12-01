@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useQuery } from '@apollo/client';
 import { GET_PLANT_PAGE } from '../../../config/store/api/plants/queries';
-import { PlantDetails } from '../../../types/app';
+import { IPlantDetails } from '../../../types/app';
 import gridify from '../../ui/mixins/grid';
 import { PlantCard } from '../../components';
 import { jsx } from '@emotion/react';
@@ -21,7 +21,7 @@ const PlantIndex = (): JSX.Element => {
     <Redirect to="/" />
   ) : (
     <section css={gridify(4)}>
-      {data.plantCatalog.map((plant: PlantDetails) => (
+      {data.plantCatalog.map((plant: IPlantDetails) => (
         <PlantCard plant={plant} key={plant.id} />
       ))}
     </section>

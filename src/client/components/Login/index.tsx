@@ -49,10 +49,23 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
   };
 
   const handleLoginSubmission = async (): Promise<void> => {
-    const { data } = await userLogin({ variables: { email, password } });
-    localStorage.setItem('userToken', JSON.stringify(data.userLogIn.token));
-    loggedInStatus(true);
-    clearInputs();
+    let user;
+    try {
+      const { data } = await userLogin({ variables: { email, password } });
+      user = data.userLogIn;
+    } catch (errors) {
+      console.error(errors.message);
+    }
+
+    if (user) {
+      localStorage.setItem('userToken', JSON.stringify(user.token));
+      loggedInStatus(true);
+      clearInputs();
+    }
+
+    if (loginData) {
+      console.log(loginData);
+    }
   };
 
   const handleSignupSubmission = async (): Promise<void> => {
@@ -71,8 +84,6 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
       }}
     >
       <LoginFormMessage />
-      {loginError && <h6>{loginError.message}</h6>}
-      {signupError && <h6>{signupError.message}</h6>}
       {!isLoginView && <LoginInput id="name" label="name" value={name} setValue={setName} />}
       <LoginInput id="email" label="email" value={email} setValue={setEmail} />
       <LoginInput
@@ -85,6 +96,8 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
       <Submit>Submit</Submit>
       {loginData && <h6>Login Successful!</h6>}
       {signupData && <h6>User Successfully Created!</h6>}
+      {loginError && <h6>{loginError.message}</h6>}
+      {signupError && <h6>{signupError.message}</h6>}
     </Form>
   );
 };
