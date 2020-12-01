@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useQuery } from '@apollo/client';
 import { GET_RANDOM_PLANT_PAGE } from '../../config/store/api/plants/queries';
-import { PlantDetails } from '../../types/app';
+import { IPlantDetails } from '../../types/app';
 import { PlantCard } from '../components';
 import { jsx } from '@emotion/react';
 import gridify from '../ui/mixins/grid';
@@ -28,7 +28,7 @@ const Home = (): JSX.Element => {
         <section className="row-cell" css={gridify(2)}>
           {data.randomPlantCatalog
             .slice(randomIndex, randomIndex + 4)
-            .map((plant: PlantDetails) => (
+            .map((plant: IPlantDetails) => (
               <PlantCard plant={plant} key={plant.id} />
             ))}
         </section>

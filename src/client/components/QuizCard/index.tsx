@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import { IQuizChoice } from '../../../types/app';
+import { secondaryGradient } from '../../ui/common/gradients';
 import { addBackgroundImage } from '../../ui/common/mixins';
+import gridify from '../../ui/mixins/grid';
+import { AnswerChoices } from './AnswerChoices';
 
 interface IQuizCardProps {
   changeRound: () => void;
@@ -21,12 +24,14 @@ export const QuizCard = ({
   return (
     <section
       css={css`
-        max-width: 110rem;
+        max-width: 85rem;
         margin: 0 auto;
         display: flex;
         flex-flow: column;
         justify-content: center;
         align-items: center;
+        padding: 1rem;
+        ${secondaryGradient}
       `}
     >
       <div
@@ -42,19 +47,18 @@ export const QuizCard = ({
       >
         {' '}
       </div>
-      <form>
-        {currentQuestion.choices.map((answerChoice) => (
-          <button
-            type="submit"
-            key={answerChoice.id}
-            onClick={() => {
-              scoreHandler(answerChoice.id);
-              changeRound();
-            }}
-          >
-            {answerChoice.commonName}
-          </button>
-        ))}
+      <form
+        css={css`
+          ${gridify(2, 75)}
+        `}
+      >
+        {currentQuestion.choices && (
+          <AnswerChoices
+            choices={currentQuestion.choices}
+            scoreHandler={scoreHandler}
+            changeRound={changeRound}
+          />
+        )}
       </form>
     </section>
   );
