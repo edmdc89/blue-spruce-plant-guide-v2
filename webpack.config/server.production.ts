@@ -16,8 +16,10 @@ const serverConfig: webpack.Configuration = merge(common, {
     filename: '[name].js',
   },
   target: 'node',
-  node: false,
-  externals: nodeExternals(),
+  node: {
+    __dirname: false,
+  },
+  externals: [nodeExternals()],
 });
 
 export default serverConfig;
