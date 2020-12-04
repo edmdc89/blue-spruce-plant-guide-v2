@@ -12,7 +12,7 @@
     "devBuild:server": "webpack --config ./webpack.config/server.development.ts --watch",
     "devStart": "nodemon dist/server.js",
     "serve": "yarn clean && run-p -l devBuild:* devStart",
-    "build": "webpack --config ./webpack.config/server.production.ts && webpack --config ./webpack.config/client.production.ts",
+    "build": "webpack --config ./webpack.config/client.production.ts && webpack --config ./webpack.config/server.production.ts",
     "start": "node dist/server.js",
     "test:watch": "jest --watch",
     "test": "jest --forceExit"
