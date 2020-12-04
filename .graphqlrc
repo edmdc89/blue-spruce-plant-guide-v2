@@ -1,2 +1,0 @@
-schema: 'src/config/store/schema.ts'
-documents: 'src/client/**/*.ts'
