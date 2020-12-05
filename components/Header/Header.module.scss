@@ -1,0 +1,30 @@
+@import "../../styles/abstracts/variables";
+@import "../../styles/base/utilities";
+
+.header {
+  height: 7rem;
+  max-width: 110rem;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  background: $secondaryAccent;
+}
+
+.title {
+  @include mB1;
+  font-size: 3.3rem;
+  font-weight: 700;
+}
+
+.nav {
+  @include mB1;
+  font-size: 1.8rem;
+
+  span {
+    margin: 0 0.8rem;
+    color: $primary;
+  }
+}
