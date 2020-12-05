@@ -1,5 +1,0 @@
-{
-presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript',
-],
-plugins: ['@emotion', '@loadable/babel-plugin', "@babel/plugin-proposal-object-rest-spread"],
-}
