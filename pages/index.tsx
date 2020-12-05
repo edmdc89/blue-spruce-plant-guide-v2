@@ -1,12 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
+import PlantCard from '../components/PlantCard';
 
 const Home = (): JSX.Element => {
-  return (
-    <main>
-      <Header />
-    </main>
-  );
+  return <PlantCard />;
 };
 
 export default Home;
