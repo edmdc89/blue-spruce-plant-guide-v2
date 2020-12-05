@@ -1,29 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { loadableReady } from '@loadable/component';
-import { BrowserRouter } from 'react-router-dom';
-import { CacheProvider } from '@emotion/react';
-import createCache from '@emotion/cache';
 import { ApolloProvider } from '@apollo/client';
-import { apolloClient } from '../config/store';
-import { Root } from './pages';
-import { loggedInStatus } from '../config/store/cache';
+import { useApollo } from '../lib/apolloClient';
 
-const render = (App: () => JSX.Element) => {
-  const root = document.getElementById('root');
-  const cache = createCache({ key: 'custom' });
-  loggedInStatus(!!window.localStorage.getItem('userToken'));
+export default function App({ Component, pageProps }): JSX.Element {
+  const apolloClient = useApollo(pageProps);
 
-  const Client = (
+  return (
     <ApolloProvider client={apolloClient}>
-      <BrowserRouter>
-        <CacheProvider value={cache}>
-          <App />
-        </CacheProvider>
-      </BrowserRouter>
+      <Component {...pageProps} />
     </ApolloProvider>
   );
-  ReactDOM.hydrate(Client, root);
-};
-
-loadableReady(() => render(Root));
+}
