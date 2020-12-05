@@ -1,10 +1,30 @@
-@mixin gridify($columnNumber, $width: $maxWidth) {
+@import './variables';
+
+@mixin gridify($columnNumber, $width: 110rem) {
   display: grid;
   grid-template-columns: repeat(
     $columnNumber,
-    calc((100% - (($columnNumber - 1) * $gridGap)) / $columnNumber)
+    calc((100% - ((#{$columnNumber} - 1) * #{$gridGap})) / #{$columnNumber})
   );
   grid-gap: $gridGap;
   margin: 0 auto;
   max-width: $width;
+}
+
+@mixin addBackgroundImage($url) {
+  background-size: cover;
+  height: 24rem;
+  background-blend-mode: screen;
+  background-image: url(#{$url});
+  background-position: center center;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+
+@mixin clearfix {
+    &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
 }

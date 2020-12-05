@@ -1,17 +1,11 @@
 import React from 'react';
-import { ApolloProvider } from '@apollo/client';
-import { useApollo } from '../lib/apolloClient';
 import Layout from '../components/Layout';
 import '../styles/main.scss';
 
-export default function App({ Component, pageProps }): JSX.Element {
-  const apolloClient = useApollo(pageProps);
+const App = ({ Component, pageProps }): JSX.Element => (
+  <Layout>
+    <Component {...pageProps} />
+  </Layout>
+);
 
-  return (
-    <ApolloProvider client={apolloClient}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ApolloProvider>
-  );
-}
+export default App;

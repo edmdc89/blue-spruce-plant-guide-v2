@@ -1,4 +1,7 @@
 @import "../../styles/abstracts/variables";
+@import "../../styles/abstracts/mixins";
+@import "../../styles/base/typography";
+@import "../../styles/base/utilities";
 
 .plantCard {
   position: relative;
@@ -26,6 +29,21 @@
       background: $offWhite;
       text-align: left;
       transform: rotateY(180deg);
+
+      h5 {
+        @include heading-styles('h5');
+        color: $textDark;
+      }
+
+      h6 {
+        @include heading-styles('h6', 400);
+        color: $textDark;
+
+        &.italic {
+          @include heading-styles('h6', 400, italic);
+          color: $textDark;
+        }
+      }
     }
   }
 
@@ -40,4 +58,21 @@
       }
     }
   }
+
+  .plantImage {
+    background-size: cover;
+    height: 24rem;
+    background-blend-mode: screen;
+    background-position: center center;
+    border-radius: 0.3rem;
+  }
+
+  .plantName {
+    @include mB1;
+    @include heading-styles('h5');
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
 }
+
