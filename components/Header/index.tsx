@@ -9,7 +9,7 @@ const Header = (): JSX.Element => {
         <a className={styles.title}>Blue Spruce Plant Guide</a>
       </Link>
       <nav className={styles.nav}>
-        <Link href="/plant-index">
+        <Link href="/plants">
           <a>Plant Catalog</a>
         </Link>
         <span>|</span>

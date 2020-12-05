@@ -1,8 +1,5 @@
 import React from 'react';
-import PlantCard from '../components/PlantCard';
 
-const Home = (): JSX.Element => {
-  return <PlantCard />;
-};
+const Home = (): JSX.Element => <h1>Hello World</h1>;
 
 export default Home;

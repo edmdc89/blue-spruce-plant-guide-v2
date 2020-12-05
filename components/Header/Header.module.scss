@@ -1,7 +1,9 @@
 @import "../../styles/abstracts/variables";
 @import "../../styles/base/utilities";
+@import "../../styles/base/typography";
 
 .header {
+  @include link-styles;
   height: 7rem;
   max-width: 110rem;
   margin: 1.5rem auto;
