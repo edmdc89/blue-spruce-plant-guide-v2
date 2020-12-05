@@ -1,50 +1,34 @@
-/** @jsx jsx */
-import { jsx, SerializedStyles } from '@emotion/react';
-import { IPlantDetails } from '../../../types/app';
-import { addBackgroundImage } from '../../ui/common/mixins';
-import { CardSide, InfoCard } from './InfoCard';
-import { headingStyles } from '../../ui/typography/headings';
+import React from 'react';
+// import { IPlantDetails } from '../../../types/app';
+import styles from './PlantCard.module.scss';
 
-type PlantCardProps = {
-  plant: IPlantDetails;
-  css?: SerializedStyles;
-};
+// type PlantCardProps = {
+//   plant: IPlantDetails;
+// };
 
-const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
+const PlantCard = (): JSX.Element => {
+  const plant = {
+    commonName: 'plant',
+    scientificName: 'herbaceous material',
+    familyCommonName: 'plant family',
+    familyScientificName: 'family genus',
+    imageUrl: 'none',
+  };
+
   return (
-    <InfoCard>
-      <CardSide className="front">
-        {plant.imageUrl && <div css={addBackgroundImage(plant.imageUrl)}> </div>}
-        <h4 css={headingStyles('h5')}>{plant.commonName}</h4>
-      </CardSide>
-      <CardSide className="back">
-        <h5 css={headingStyles('h5', { inverColor: true })}>Scientific Name:</h5>
-        <h6
-          css={headingStyles('h6', {
-            inverColor: true,
-            bodyText: true,
-            italic: true,
-            thin: true,
-          })}
-        >
-          {plant.scientificName}
-        </h6>
-        <h5 css={headingStyles('h5', { inverColor: true })}>Family Name:</h5>
-        <h6 css={headingStyles('h6', { inverColor: true, bodyText: true, thin: true })}>
-          {plant.familyCommonName}
-        </h6>
-        <h6
-          css={headingStyles('h6', {
-            inverColor: true,
-            bodyText: true,
-            italic: true,
-            thin: true,
-          })}
-        >
-          {plant.familyScientificName}
-        </h6>
-      </CardSide>
-    </InfoCard>
+    <article className={styles.plantCard}>
+      <div className={styles.front}>
+        {plant.imageUrl && <div> </div>}
+        <h4>{plant.commonName}</h4>
+      </div>
+      <div className={styles.back}>
+        <h5>Scientific Name:</h5>
+        <h6>{plant.scientificName}</h6>
+        <h5>Family Name:</h5>
+        <h6>{plant.familyCommonName}</h6>
+        <h6>{plant.familyScientificName}</h6>
+      </div>
+    </article>
   );
 };
 

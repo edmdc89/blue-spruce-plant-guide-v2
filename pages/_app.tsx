@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../lib/apolloClient';
+import Layout from '../components/Layout';
 import '../styles/main.scss';
 
 export default function App({ Component, pageProps }): JSX.Element {
@@ -8,7 +9,9 @@ export default function App({ Component, pageProps }): JSX.Element {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   );
 }
