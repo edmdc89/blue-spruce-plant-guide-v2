@@ -1,0 +1,10 @@
+@mixin gridify($columnNumber, $width: $maxWidth) {
+  display: grid;
+  grid-template-columns: repeat(
+    $columnNumber,
+    calc((100% - (($columnNumber - 1) * $gridGap)) / $columnNumber)
+  );
+  grid-gap: $gridGap;
+  margin: 0 auto;
+  max-width: $width;
+}
