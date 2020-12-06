@@ -4,7 +4,7 @@ import { cache } from './cache';
 import link from './link';
 
 const apolloClient = new ApolloClient({
-  ssrMode: typeof window !== undefined,
+  ssrMode: typeof window === 'undefined',
   link,
   cache,
   connectToDevTools: true,

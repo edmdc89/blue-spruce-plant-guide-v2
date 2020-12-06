@@ -1,18 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { MemoryRouter as Router } from 'react-router-dom';
-import Header from '../../src/client/components/Header';
-import { theme } from '../../src/client/ui/common/theme';
-import { ThemeProvider } from '@emotion/react';
+import Header from '../../components/Header';
 
-const MockHeader = (): JSX.Element => (
-  <Router>
-    <ThemeProvider theme={theme}>
-      <Header />
-    </ThemeProvider>
-  </Router>
-);
+const MockHeader = (): JSX.Element => <Header />;
 
 describe('App header', () => {
   it.skip('should have a title', () => {
