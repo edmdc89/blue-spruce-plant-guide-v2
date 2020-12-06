@@ -1,6 +1,6 @@
 @import './variables';
 
-@mixin gridify($columnNumber, $width: 110rem) {
+@mixin gridify($columnNumber, $width: 110rem, $gridGap: 1.5rem) {
   display: grid;
   grid-template-columns: repeat(
     $columnNumber,
@@ -11,20 +11,16 @@
   max-width: $width;
 }
 
-@mixin addBackgroundImage($url) {
-  background-size: cover;
-  height: 24rem;
-  background-blend-mode: screen;
-  background-image: url(#{$url});
-  background-position: center center;
-  padding: 0.3rem;
-  border-radius: 0.3rem;
-}
-
 @mixin clearfix {
     &::after {
     content: '';
     display: table;
     clear: both;
   }
+}
+
+@mixin positionImage {
+  background-size: cover;
+  background-blend-mode: screen;
+  background-position: center center;
 }

@@ -1,20 +1,17 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react';
-import { IPlantDetails } from '../../../types/app';
-import { lightGradient } from '../../ui/common/gradients';
-import gridify from '../../ui/mixins/grid';
+import { IPlantDetails } from '../../types/app';
 import { headingStyles } from '../../ui/typography/headings';
 
 interface IAnswerChoicesProps {
   choices: IPlantDetails[];
-  changeRound: () => void;
+  nextRound: () => void;
   scoreHandler: (userAnswerID: number) => void;
 }
 
 export const AnswerChoices = ({
   choices,
   scoreHandler,
-  changeRound,
+  nextRound,
 }: IAnswerChoicesProps): JSX.Element => {
   return (
     <div
@@ -29,7 +26,7 @@ export const AnswerChoices = ({
           key={answerChoice.id}
           onClick={() => {
             scoreHandler(answerChoice.id);
-            changeRound();
+            nextRound();
           }}
           css={css`
             ${headingStyles('h5', { inverColor: true })}

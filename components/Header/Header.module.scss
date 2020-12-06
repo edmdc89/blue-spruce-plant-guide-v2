@@ -1,6 +1,4 @@
-@import "../../styles/abstracts/variables";
-@import "../../styles/base/utilities";
-@import "../../styles/base/typography";
+@import '../../styles/mixins/index';
 
 .header {
   @include link-styles;
@@ -16,13 +14,13 @@
 }
 
 .title {
-  @include mB1;
+  @include margin_bottom_1;
   font-size: 3.3rem;
   font-weight: 700;
 }
 
 .nav {
-  @include mB1;
+  @include margin_bottom_1;
   font-size: 1.8rem;
 
   span {

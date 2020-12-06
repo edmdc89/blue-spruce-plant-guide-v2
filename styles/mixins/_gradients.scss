@@ -1,0 +1,11 @@
+@mixin primaryGradient {
+  background-image: linear-gradient(to bottom right, $primary, $primaryAccent);
+}
+
+@mixin secondaryGradient {
+  background-image: linear-gradient(to bottom right, $secondaryAccent, $secondary);
+}
+
+@mixin lightGradient {
+  background-image: linear-gradient(to bottom right, $offWhite, $offWhiteAccent);
+}

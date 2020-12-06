@@ -1,7 +1,4 @@
-@import "../../styles/abstracts/variables";
-@import "../../styles/abstracts/mixins";
-@import "../../styles/base/typography";
-@import "../../styles/base/utilities";
+@import "../../styles/mixins/index";
 
 .plantCard {
   position: relative;
@@ -21,7 +18,7 @@
     overflow: hidden;
 
     &.front {
-      background: $secondary;
+      @include secondaryGradient;
       text-align: center;
     }
 
@@ -60,15 +57,13 @@
   }
 
   .plantImage {
-    background-size: cover;
+    @include positionImage;
     height: 24rem;
-    background-blend-mode: screen;
-    background-position: center center;
     border-radius: 0.3rem;
   }
 
   .plantName {
-    @include mB1;
+    @include margin_bottom_1;
     @include heading-styles('h5');
     width: 100%;
     position: absolute;

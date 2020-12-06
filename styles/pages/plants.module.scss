@@ -1,4 +1,4 @@
-@import '../abstracts/mixins';
+@import '../mixins/index';
 .plants {
   @include gridify(4);
 }

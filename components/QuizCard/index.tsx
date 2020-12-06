@@ -1,65 +1,49 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react';
-import { IQuizChoice } from '../../../types/app';
-import { secondaryGradient } from '../../ui/common/gradients';
-import { addBackgroundImage } from '../../ui/common/mixins';
-import gridify from '../../ui/mixins/grid';
-import { AnswerChoices } from './AnswerChoices';
+import React from 'react';
+import { IQuizChoice } from '../../types/app';
+import styles from './QuizCard.module.scss';
 
 interface IQuizCardProps {
-  changeRound: () => void;
+  nextRound: () => void;
   scoreHandler: (userAnswerID: number) => void;
   currentQuestion: IQuizChoice;
 }
 
-export const QuizCard = ({
+const QuizCard = ({
   currentQuestion,
   scoreHandler,
-  changeRound,
+  nextRound,
 }: IQuizCardProps): JSX.Element => {
   const correctAnwer = currentQuestion.choices.find(
     (answerChoice) => currentQuestion.answerID === answerChoice.id,
   );
 
   return (
-    <section
-      css={css`
-        max-width: 85rem;
-        margin: 0 auto;
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-        ${secondaryGradient}
-      `}
-    >
+    <section className={styles.quizCard}>
       <div
-        css={css`
-          ${addBackgroundImage(correctAnwer?.imageUrl)}
-          height: 70vh;
-          min-width: 60rem;
-          background-size: contain;
-          background-repeat: no-repeat;
-        `}
+        className={styles.image}
+        style={{ backgroundImage: `url(${correctAnwer.imageUrl})` }}
         role="img"
         aria-label={`${correctAnwer?.scientificName} in the wild`}
       >
         {' '}
       </div>
-      <form
-        css={css`
-          ${gridify(2, 75)}
-        `}
-      >
-        {currentQuestion.choices && (
-          <AnswerChoices
-            choices={currentQuestion.choices}
-            scoreHandler={scoreHandler}
-            changeRound={changeRound}
-          />
-        )}
-      </form>
+      <article className={styles.choices}>
+        {currentQuestion.choices &&
+          currentQuestion.choices.map((choice) => (
+            <button
+              key={choice.id}
+              onClick={(e) => {
+                e.preventDefault();
+                scoreHandler(choice.id);
+                nextRound();
+              }}
+            >
+              {choice.commonName}
+            </button>
+          ))}
+      </article>
     </section>
   );
 };
+
+export default QuizCard;

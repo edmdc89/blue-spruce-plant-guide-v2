@@ -9,10 +9,10 @@ html {
 }
 
 body {
+  background-color: $primary;
   box-sizing: border-box;
   overflow-y: hidden;
   height: 100vh;
-  background: $primary;
   font-family: 'Ubuntu', sans-serif;
   overflow-y: scroll;
 }
