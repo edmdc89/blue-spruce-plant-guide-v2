@@ -6,31 +6,13 @@ import PlantCard from '../components/PlantCard';
 import QuizCard from '../components/QuizCard';
 import { IPlantDetails } from '../types/app';
 import styles from '../styles/pages/index.module.scss';
-
-export const GET_RANDOM_PLANT_PAGE = gql`
-  query GetRandomPlantPage {
-    randomPlantCatalog {
-      commonName
-      scientificName
-      id
-      imageUrl
-      familyScientificName
-      familyCommonName
-    }
-    plantQuiz {
-      answerID
-      choices {
-        id
-        commonName
-        scientificName
-        imageUrl
-      }
-    }
-  }
-`;
+import { GET_RANDOM_PLANT_PAGE, GET_RANDOM_QUIZ } from '../lib/apolloClient/queries';
 
 const Home = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_RANDOM_PLANT_PAGE);
+  const { data: quizData } = useQuery(GET_RANDOM_QUIZ);
+  console.log(data);
+  console.log(quizData);
 
   const randomIndex = Math.floor(Math.random() * 9);
 
@@ -60,7 +42,7 @@ const Home = (): JSX.Element => {
             <QuizCard
               nextRound={() => console.log('oops')}
               scoreHandler={scoreHandler}
-              currentQuestion={data.plantQuiz[0]}
+              currentQuestion={quizData.plantQuiz[0]}
             />
           </article>
         </section>
