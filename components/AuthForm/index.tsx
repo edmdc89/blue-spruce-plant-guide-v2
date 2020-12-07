@@ -1,13 +1,4 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
-import LoginInput from './Input';
-import Submit from './SubmitBtn';
-import Form from './Form';
-import { headingStyles } from '../../ui/typography/headings';
-import { useMutation } from '@apollo/client';
-import { USER_LOGIN, USER_SIGNUP } from '../../../config/store/api/user/mutations';
-import { useState } from 'react';
-import { loggedInStatus } from '../../../config/store/cache';
+import React, { useState } from 'react';
 
 interface LoginFormProps {
   className?: string;
@@ -18,8 +9,6 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [userLogin, { data: loginData, error: loginError }] = useMutation(USER_LOGIN);
-  const [userSignup, { data: signupData, error: signupError }] = useMutation(USER_SIGNUP);
 
   const LoginFormMessage = (): JSX.Element => {
     const msg = isLoginView ? 'Not a user?' : 'Already a user?';
@@ -76,7 +65,7 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
   };
 
   return (
-    <Form
+    <form
       className={className}
       onSubmit={(e) => {
         e.preventDefault();
@@ -98,7 +87,7 @@ const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
       {signupData && <h6>User Successfully Created!</h6>}
       {loginError && <h6>{loginError.message}</h6>}
       {signupError && <h6>{signupError.message}</h6>}
-    </Form>
+    </form>
   );
 };
 

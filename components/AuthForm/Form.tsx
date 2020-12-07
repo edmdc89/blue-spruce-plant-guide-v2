@@ -14,7 +14,6 @@ const Form = styled.form`
     ${(props) => props.theme.colors.offWhiteAccent}
   );
   border-radius: ${(props) => props.theme.borderRadius};
-  padding: 1rem 0;
 `;
 
 export default Form;
