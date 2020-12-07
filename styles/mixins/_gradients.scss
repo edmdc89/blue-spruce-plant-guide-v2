@@ -15,5 +15,5 @@
 }
 
 @mixin buttonGradient {
-  background-image: radial-gradient($white, $white);
+  background-image: linear-gradient(to bottom right, $brown, $brownAccent);
 }

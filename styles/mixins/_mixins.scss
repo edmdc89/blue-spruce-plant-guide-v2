@@ -24,3 +24,10 @@
   background-blend-mode: screen;
   background-position: center center;
 }
+
+@mixin buttonStyles {
+  @include secondaryGradient;
+  @include heading-styles('h4', 400);
+  color: $textLight;
+  border-radius: 1rem;
+}
