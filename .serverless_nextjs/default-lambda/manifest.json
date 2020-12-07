@@ -1,0 +1,1 @@
+{"buildId":"1kBP44lz4srXnKAED1khu","logLambdaExecutionTimes":false,"pages":{"ssr":{"dynamic":{},"nonDynamic":{"/":"pages/index.js","/plants":"pages/plants.js","/quiz":"pages/quiz.js","/_error":"pages/_error.js"}},"html":{"dynamic":{},"nonDynamic":{"/404":"pages/404.html"}}},"publicFiles":{},"trailingSlash":false,"domainRedirects":{},"enableHTTPCompression":false}
