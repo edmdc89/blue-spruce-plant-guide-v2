@@ -1,0 +1,26 @@
+@import '../mixins/index';
+.container {
+  @include clearfix;
+  max-width: $maxWidth;
+  margin: 0 auto;
+
+  &:not(:last-child) {
+    margin-bottom: $gridGap;
+  }
+
+  .cell {
+    float: left;
+    width: calc((100% - #{$gridGap}) / 2);
+
+    &:not(:last-child) {
+      margin-right: $gridGap;
+    }
+  }
+
+  .plantPreview {
+    @include gridify(2);
+    @include lightGradient;
+    padding: $gridGap;
+    height: 82vh;
+  }
+}

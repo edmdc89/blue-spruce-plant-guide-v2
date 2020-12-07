@@ -1,7 +1,7 @@
 @import '../../styles/mixins/index';
 
 .quizCard {
-  @include secondaryGradient;
+  @include reverseLightGradient;
   max-width: 95rem;
   height: 82vh;
   margin: 0 auto;
@@ -16,17 +16,16 @@
   @include positionImage;
   @include margin_bottom_1;
   height: 80%;
-  min-width: 60rem;
+  min-width: 90%;
 }
 
 .choices {
   @include gridify(2, 85rem, 0.8rem);
 
   button {
-    @include lightGradient;
+    @include buttonGradient;
     @include heading-styles('h4', 400);
     color: $textDark;
     height: 3.3rem;
-    min-width: 28rem;
   }
 }

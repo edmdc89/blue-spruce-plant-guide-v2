@@ -1,4 +1,4 @@
-@import "../../styles/mixins/index";
+@import '../../styles/mixins/index';
 
 .plantCard {
   position: relative;
@@ -23,7 +23,6 @@
     }
 
     &.back {
-      background: $offWhite;
       text-align: left;
       transform: rotateY(180deg);
 
@@ -70,4 +69,3 @@
     bottom: 0;
   }
 }
-
