@@ -1,8 +1,8 @@
-import withApollo from '../lib/apolloClient';
+import withApollo from '../../lib/apolloClient';
 import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
-import QuizCard from '../components/QuizCard';
-import { GET_RANDOM_QUIZ } from '../lib/apolloClient/queries';
+import QuizCard from '../../components/QuizCard';
+import { GET_RANDOM_QUIZ } from '../../lib/apolloClient/queries';
 
 const Quiz = () => {
   const { loading, error, data } = useQuery(GET_RANDOM_QUIZ);
