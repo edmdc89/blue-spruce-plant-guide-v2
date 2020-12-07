@@ -2,7 +2,7 @@ import { ApolloLink, HttpLink } from '@apollo/client';
 import { Auth } from 'aws-amplify';
 
 const httpLink = new HttpLink({
-  uri: 'https://mz4y6djivh.execute-api.us-east-1.amazonaws.com/dev/graphql',
+  uri: 'http://localhost:3000/dev/graphql',
 });
 
 const authMiddleware = () => {
