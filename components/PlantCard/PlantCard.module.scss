@@ -23,21 +23,30 @@
     }
 
     &.back {
+      @include primaryGradient;
       text-align: left;
       transform: rotateY(180deg);
+      display: flex;
+      flex-flow: column nowrap;
 
       h5 {
         @include heading-styles('h5');
-        color: $textDark;
+        margin: 0.7rem 1rem;
+        color: $textLight;
+
+        &:first-child {
+          margin-top: 1.2rem;
+        }
       }
 
       h6 {
         @include heading-styles('h6', 400);
-        color: $textDark;
+        margin: 0.3rem 1.7rem;
+        color: $textLight;
 
         &.italic {
           @include heading-styles('h6', 400, italic);
-          color: $textDark;
+          color: $textLight;
         }
       }
     }
