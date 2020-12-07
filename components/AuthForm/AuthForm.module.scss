@@ -1,0 +1,46 @@
+@import "../../styles/mixins/index";
+form {
+  @include lightGradient;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0;
+  border-radius: $borderRadius;
+
+  .input {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 65%;
+    font-size: 1.6rem;
+    align-items: left;
+    margin: 0.3rem;
+    padding: 0.6rem;
+
+    input {
+      height: 3.1rem;
+      border-radius: $borderRadius;
+      padding: 0.4rem;
+      font-size: 1.8rem;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 200;
+
+      &:focus {
+        box-shadow: 0 0 0.5rem 0.3rem $gray;
+      }
+    }
+
+    label {
+      font-family: 'Fira Sans', sans-serif;
+      margin-bottom: 0.3rem;
+      font-size: 1.8rem;
+    }
+
+    button {
+      @include bottomStyles;
+    }
+  }
+}
