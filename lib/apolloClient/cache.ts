@@ -7,7 +7,7 @@ export const cache = new InMemoryCache({
       fields: {
         isLoggedIn: {
           read() {
-            return loggedInStatus();
+            return isAuthenticated();
           },
         },
         quizTracker: {
@@ -27,5 +27,5 @@ export const quizTrackerDefault: IQuizInfo = {
   currentQuiz: [],
 };
 
-export const loggedInStatus = makeVar(false);
+export const isAuthenticated = makeVar(false);
 export const quizTracker = makeVar(quizTrackerDefault);
