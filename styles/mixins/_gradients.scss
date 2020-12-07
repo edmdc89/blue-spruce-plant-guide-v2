@@ -7,5 +7,13 @@
 }
 
 @mixin lightGradient {
-  background-image: linear-gradient(to bottom right, $offWhite, $offWhiteAccent);
+  background-image: linear-gradient(to bottom right, $olive, $oliveAccent);
+}
+
+@mixin reverseLightGradient {
+  background-image: linear-gradient(to right top, $oliveAccent, $olive);
+}
+
+@mixin buttonGradient {
+  background-image: radial-gradient($white, $white);
 }
