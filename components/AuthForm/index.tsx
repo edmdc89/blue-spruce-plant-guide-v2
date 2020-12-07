@@ -1,94 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useFormFields from '../../lib/hooks/useFormFields';
+import styles from './AuthForm.module.scss';
 
-interface LoginFormProps {
-  className?: string;
-}
-
-const LoginSingupForm = ({ className }: LoginFormProps): JSX.Element => {
-  const [isLoginView, setLoginView] = useState(0);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-
-  const LoginFormMessage = (): JSX.Element => {
-    const msg = isLoginView ? 'Not a user?' : 'Already a user?';
-    const targetView = isLoginView ? 0 : 1;
-    const targetText = isLoginView ? 'Sign Up' : 'Login';
-
-    return (
-      <p
-        css={css`
-          ${headingStyles('h6', { inverColor: true, thin: true })}
-          position: absolute;
-          top: 0;
-          right: 1.3rem;
-        `}
-      >
-        {msg} | <span onClick={() => setLoginView(targetView)}>{targetText}</span>
-      </p>
-    );
-  };
+const LoginForm = (): JSX.Element => {
+  const [fields, handleFieldChange, clearField] = useFormFields({ email: '', password: '' });
 
   const clearInputs = (): void => {
-    setEmail('');
-    setPassword('');
-    if (!isLoginView) {
-      setName('');
-    }
-  };
-
-  const handleLoginSubmission = async (): Promise<void> => {
-    let user;
-    try {
-      const { data } = await userLogin({ variables: { email, password } });
-      user = data.userLogIn;
-    } catch (errors) {
-      console.error(errors.message);
-    }
-
-    if (user) {
-      localStorage.setItem('userToken', JSON.stringify(user.token));
-      loggedInStatus(true);
-      clearInputs();
-    }
-
-    if (loginData) {
-      console.log(loginData);
-    }
-  };
-
-  const handleSignupSubmission = async (): Promise<void> => {
-    const { data } = await userSignup({ variables: { name, email, password } });
-    localStorage.setItem('userToken', JSON.stringify(data.userSignUp.token));
-    loggedInStatus(true);
-    clearInputs();
+    clearField('email');
+    clearField('password');
   };
 
   return (
     <form
-      className={className}
+      className={styles.form}
       onSubmit={(e) => {
         e.preventDefault();
-        isLoginView ? handleLoginSubmission() : handleSignupSubmission();
+        clearInputs();
       }}
     >
-      <LoginFormMessage />
-      {!isLoginView && <LoginInput id="name" label="name" value={name} setValue={setName} />}
-      <LoginInput id="email" label="email" value={email} setValue={setEmail} />
-      <LoginInput
-        password
-        id="password"
-        label="password"
-        value={password}
-        setValue={setPassword}
-      />
-      <Submit>Submit</Submit>
-      {loginData && <h6>Login Successful!</h6>}
-      {signupData && <h6>User Successfully Created!</h6>}
-      {loginError && <h6>{loginError.message}</h6>}
-      {signupError && <h6>{signupError.message}</h6>}
+      <div className={styles.input}>
+        <label htmlFor="email">Email:</label>
+        <input
+          type="text"
+          value={fields.email}
+          id="email"
+          onChange={(e) => handleFieldChange(e)}
+        />
+      </div>
+      <div className={styles.input}>
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          value={fields.password}
+          id="password"
+          onChange={(e) => handleFieldChange(e)}
+        />
+      </div>
+      <button>Login</button>
     </form>
   );
 };
 
-export default LoginSingupForm;
+export default LoginForm;

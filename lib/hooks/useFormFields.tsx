@@ -6,15 +6,23 @@ interface IFormFieldProps {
   password: string;
 }
 
-const useFormFields = (initialState: IFormFieldProps): [IFormFieldProps, (e: any) => void] => {
-  const [fields, setValues] = useState(initialState);
+type FormHook = [IFormFieldProps, (e) => void, (field) => void]  
+
+const useFormFields = (initialState: IFormFieldProps): FormHook => {
+  const [fields, setValue] = useState(initialState);
 
   return [
     fields,
     (event) => {
-      setValues({
+      setValue({
         ...fields,
         [event.target.id]: event.target.value,
+      });
+    },
+    (field) => {
+      setValue({
+        ...fields,
+        [field]: '',
       });
     },
   ];
