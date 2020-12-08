@@ -22,5 +22,10 @@
     @include lightGradient;
     padding: $gridGap;
     height: 82vh;
+    overflow: hidden;
+
+    &:hover {
+      overflow-y: scroll;
+    }
   }
 }

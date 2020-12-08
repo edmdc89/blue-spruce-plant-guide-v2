@@ -1,8 +1,8 @@
 node_modules
-.serverless
-.serverless_nextjs
-dist
-.next
-.vs_code
-.env_local
 config.ts
+.*
+!/.gitignore
+!/.babelrc
+!/.eslintrc.yaml
+!/.prettier.yaml
+!/.travis.yml
