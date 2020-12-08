@@ -5,6 +5,7 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   height: 28.5rem;
+  border-radius: $borderRadius;
 
   div {
     height: 28.5rem;
@@ -16,6 +17,7 @@
     backface-visibility: hidden;
     --webkit-backface-visibility: hidden;
     overflow: hidden;
+    border-radius: $borderRadius;
 
     &.front {
       @include secondaryGradient;
