@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import QuizCard from '../../components/QuizCard';
 import { GET_RANDOM_QUIZ } from '../../lib/apolloClient/queries';
+import Layout from '../../components/Layout';
 
 const Quiz = () => {
   const { loading, error, data } = useQuery(GET_RANDOM_QUIZ);
@@ -19,14 +20,20 @@ const Quiz = () => {
     }
   };
 
-  return loading ? (
-    <h1>Loading...</h1>
-  ) : (
-    <QuizCard
-      nextRound={() => setRound(round + 1)}
-      scoreHandler={(userAnswerID) => checkUserAnswer(userAnswerID)}
-      currentQuestion={plantQuiz[round]}
-    />
+  return (
+    <Layout>
+      <>
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <QuizCard
+            nextRound={() => setRound(round + 1)}
+            scoreHandler={(userAnswerID) => checkUserAnswer(userAnswerID)}
+            currentQuestion={plantQuiz[round]}
+          />
+        )}
+      </>
+    </Layout>
   );
 };
 

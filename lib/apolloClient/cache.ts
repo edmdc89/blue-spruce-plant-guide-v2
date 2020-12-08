@@ -11,7 +11,6 @@ export const cache = new InMemoryCache({
             let user;
             try {
               user = await Auth.currentUserInfo();
-              console.log(user, 'inside queryfield');
             } catch (err) {
               console.log(err.message);
             }

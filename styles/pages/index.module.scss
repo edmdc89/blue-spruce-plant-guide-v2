@@ -21,7 +21,7 @@
     @include gridify(2);
     @include lightGradient;
     padding: $gridGap;
-    height: 82vh;
+    height: 85vh;
     overflow: hidden;
 
     &:hover {
