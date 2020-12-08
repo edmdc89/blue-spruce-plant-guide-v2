@@ -1,10 +1,8 @@
-import withApollo from '../lib/apolloClient';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from './Header';
-import { gql, useQuery } from '@apollo/client';
 
 interface ILayoutProps {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
 const Layout = ({ children }: ILayoutProps): JSX.Element => {
