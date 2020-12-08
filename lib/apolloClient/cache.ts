@@ -1,13 +1,21 @@
 import { InMemoryCache, makeVar } from '@apollo/client';
+import { Auth } from 'aws-amplify';
 import { IQuizInfo } from '../../types/app';
 
 export const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        isLoggedIn: {
-          read() {
-            return isAuthenticated();
+        currentUser: {
+          async read() {
+            let user;
+            try {
+              user = await Auth.currentUserInfo();
+              console.log(user, 'inside queryfield');
+            } catch (err) {
+              console.log(err.message);
+            }
+            return user;
           },
         },
         quizTracker: {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Amplify } from 'aws-amplify';
-import Layout from '../components/Layout';
 import '../styles/main.scss';
 import config from '../config';
 
@@ -14,10 +13,6 @@ Amplify.configure({
   },
 });
 
-const App = ({ Component, pageProps }): JSX.Element => (
-  <Layout>
-    <Component {...pageProps} />
-  </Layout>
-);
+const App = ({ Component, pageProps }): JSX.Element => <Component {...pageProps} />;
 
 export default App;
