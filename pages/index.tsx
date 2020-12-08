@@ -1,5 +1,5 @@
 import { Auth } from 'aws-amplify';
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import withApollo from '../lib/apolloClient';
 import React, { useEffect } from 'react';
 import PlantCard from '../components/PlantCard';
@@ -8,10 +8,20 @@ import { IPlantDetails } from '../types/app';
 import styles from '../styles/pages/index.module.scss';
 import { GET_RANDOM_PLANT_PAGE, GET_RANDOM_QUIZ } from '../lib/apolloClient/queries';
 import { isAuthenticated } from '../lib/apolloClient/cache';
+import Layout from '../components/Layout';
+
+const GET_CURRENT_USER = gql`
+  query getCurrentUser {
+    currentUser @client
+  }
+`;
 
 const Home = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_RANDOM_PLANT_PAGE);
   const { loading: loadingQuiz, data: quizData } = useQuery(GET_RANDOM_QUIZ);
+  const { loading: loadingUser, data: userData, error: userError } = useQuery(
+    GET_CURRENT_USER,
+  );
 
   const onLoad = async () => {
     try {
@@ -38,7 +48,7 @@ const Home = (): JSX.Element => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <section>
+    <Layout>
       {loading || loadingQuiz ? (
         <h1>Loading</h1>
       ) : (
@@ -61,7 +71,7 @@ const Home = (): JSX.Element => {
           )}
         </section>
       )}
-    </section>
+    </Layout>
   );
 };
 
