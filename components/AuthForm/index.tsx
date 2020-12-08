@@ -1,4 +1,5 @@
 import React from 'react';
+import { Auth } from 'aws-amplify';
 import useFormFields from '../../lib/hooks/useFormFields';
 import styles from './AuthForm.module.scss';
 
@@ -10,11 +11,22 @@ const LoginForm = (): JSX.Element => {
     clearField('password');
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await Auth.signIn(fields.email, fields.password);
+      alert('Logged in');
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+
   return (
     <form
       className={styles.form}
       onSubmit={(e) => {
         e.preventDefault();
+        handleSubmit(event);
         clearInputs();
       }}
     >
