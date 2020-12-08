@@ -7,6 +7,21 @@ type PlantCardProps = {
 };
 
 const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
+  const formatName = (plant: IPlantDetails): JSX.Element => {
+    const name = plant.commonName ? plant.commonName : plant.scientificName;
+    if (name.length > 23) {
+      const splitName = name.split(' ');
+      return (
+        <h3 className={styles.plantName}>
+          {splitName[0]}
+          <br />
+          {splitName[1]}
+        </h3>
+      );
+    }
+    return <h3 className={styles.plantName}>{name}</h3>;
+  };
+
   return (
     <article className={styles.plantCard}>
       <div className={styles.front}>
@@ -18,9 +33,11 @@ const PlantCard = ({ plant }: PlantCardProps): JSX.Element => {
         >
           {' '}
         </div>
-        <h3 className={styles.plantName}>{plant.commonName}</h3>
+        {formatName(plant)}
       </div>
       <div className={styles.back}>
+        <h5>Common Name:</h5>
+        <h6>{plant.commonName ? plant.commonName : 'None Found'}</h6>
         <h5>Scientific Name:</h5>
         <h6 className={styles.italic}>{plant.scientificName}</h6>
         <h5>Family Name:</h5>

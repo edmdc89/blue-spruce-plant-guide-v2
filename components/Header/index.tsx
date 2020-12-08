@@ -1,26 +1,9 @@
-import React, { useEffect } from 'react';
-import withApollo from '../../lib/apolloClient/index';
-import { Auth } from 'aws-amplify';
+import React from 'react';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 import { isAuthenticated } from '../../lib/apolloClient/cache';
 
 const Header = (): JSX.Element => {
-  const onLoad = async () => {
-    try {
-      await Auth.currentSession();
-      isAuthenticated(true);
-    } catch (e) {
-      if (e !== 'No current user') {
-        alert(e.message);
-      }
-    }
-  };
-
-  useEffect(() => {
-    onLoad();
-  }, []);
-
   return (
     <header className={styles.header}>
       <Link href="/">
@@ -57,4 +40,4 @@ const Header = (): JSX.Element => {
   );
 };
 
-export default withApollo({ ssr: true })(Header);
+export default Header;
