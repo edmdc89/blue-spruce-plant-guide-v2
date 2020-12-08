@@ -6,7 +6,7 @@ interface IFormFieldProps {
   password: string;
 }
 
-type FormHook = [IFormFieldProps, (e) => void, (field) => void]  
+type FormHook = [IFormFieldProps, (e) => void, (field: string) => void];
 
 const useFormFields = (initialState: IFormFieldProps): FormHook => {
   const [fields, setValue] = useState(initialState);
@@ -19,11 +19,8 @@ const useFormFields = (initialState: IFormFieldProps): FormHook => {
         [event.target.id]: event.target.value,
       });
     },
-    (field) => {
-      setValue({
-        ...fields,
-        [field]: '',
-      });
+    () => {
+      setValue(initialState);
     },
   ];
 };
