@@ -14,6 +14,8 @@ const Quiz = () => {
   if (error) return <h1>{error.message}</h1>;
 
   const checkUserAnswer = (userAnswerID: number) => {
+    console.log(userAnswerID, 'user answer');
+    console.log(plantQuiz[round].answerID, 'plant quiz answer');
     if (userAnswerID === plantQuiz[round].answerID) {
       increaseScore();
     }
@@ -21,6 +23,7 @@ const Quiz = () => {
       alert(`Quiz Done. Score: ${score} of ${totalRounds}`);
       return;
     }
+    console.log(score, 'what happens');
     nextRound();
   };
 
