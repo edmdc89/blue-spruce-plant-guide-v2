@@ -9,18 +9,16 @@ interface IQuizTrackerHook {
 }
 
 const useQuizTracker = (): IQuizTrackerHook => {
-  const initialState = {
-    round: 0,
-    score: 0,
-    totalRounds: 10,
-  };
-
-  const [tracker, setTrackerValue] = useState(initialState);
+  const [round, setRound] = useState(0);
+  const [score, setScore] = useState(0);
+  const [totalRounds, setTotalRounds] = useState(10);
 
   return {
-    ...tracker,
-    nextRound: () => setTrackerValue({ ...tracker, round: tracker.round + 1 }),
-    increaseScore: () => setTrackerValue({ ...tracker, score: tracker.score + 1 }),
+    round,
+    score,
+    totalRounds,
+    nextRound: () => setRound(round + 1),
+    increaseScore: () => setScore(score + 1),
   };
 };
 
