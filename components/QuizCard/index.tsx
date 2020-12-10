@@ -1,14 +1,21 @@
 import React from 'react';
+import classnames from 'classnames';
 import { IQuizChoice } from '../../types/app';
 import styles from './QuizCard.module.scss';
 
 interface IQuizCardProps {
+  className?: string;
   scoreHandler: (userAnswerID: number) => void;
   currentQuestion: IQuizChoice;
   round: number;
 }
 
-const QuizCard = ({ currentQuestion, scoreHandler, round }: IQuizCardProps): JSX.Element => {
+const QuizCard = ({
+  currentQuestion,
+  scoreHandler,
+  round,
+  className,
+}: IQuizCardProps): JSX.Element => {
   const correctAnwer = currentQuestion.choices.find(
     (answerChoice) => currentQuestion.answerID === answerChoice.id,
   );
@@ -36,7 +43,7 @@ const QuizCard = ({ currentQuestion, scoreHandler, round }: IQuizCardProps): JSX
   };
 
   return (
-    <section className={styles.quizCard}>
+    <section className={classnames(styles.quizCard, className)}>
       {createAnswerClue()}
       <article className={styles.choices}>
         {currentQuestion.choices &&
