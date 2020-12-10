@@ -17,6 +17,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.0",
+    "@types/classnames": "^2.2.11",
     "@types/eslint": "^7.2.4",
     "@types/jest": "^26.0.15",
     "@types/prettier": "^2.1.5",
@@ -44,6 +45,7 @@
     "@apollo/client": "^3.2.5",
     "aws-amplify": "^3.3.11",
     "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
     "cross-fetch": "^3.0.6",
     "deepmerge": "^4.2.2",
     "graphql": "^15.4.0",

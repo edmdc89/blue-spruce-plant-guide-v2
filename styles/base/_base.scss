@@ -16,3 +16,9 @@ body {
   font-family: 'Ubuntu', sans-serif;
   overflow-y: scroll;
 }
+
+@media (max-width: $breakpoint_1) {
+  html {
+    font-size: 50%;
+  }
+}

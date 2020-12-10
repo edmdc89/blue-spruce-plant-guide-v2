@@ -3,7 +3,6 @@
 .quizCard {
   @include reverseLightGradient;
   @include flexColumn;
-  max-width: 95rem;
   height: 85vh;
   margin: 0 auto;
   padding: 1rem;
@@ -31,6 +30,7 @@
 
 .choices {
   @include gridify(2, 85rem, 1.2rem);
+  min-width: 90%;
   margin-top: 1rem;
 
   button {
