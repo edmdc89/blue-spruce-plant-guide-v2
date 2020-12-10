@@ -11,6 +11,13 @@
   max-width: $width;
 }
 
+@mixin flexColumn {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin clearfix {
     &::after {
     content: '';

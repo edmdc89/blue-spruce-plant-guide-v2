@@ -2,13 +2,9 @@
 
 .quizCard {
   @include reverseLightGradient;
-  max-width: 95rem;
-  height: 82vh;
+  @include flexColumn;
+  height: 85vh;
   margin: 0 auto;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
   padding: 1rem;
 }
 
@@ -19,8 +15,22 @@
   min-width: 90%;
 }
 
+.text {
+  @include flexColumn;
+  height: 70%;
+  min-width: 90%;
+
+  span {
+    font-size: 5.5rem;
+    font-weight: 700;
+    color: $textDark;
+    font-style: italic;
+  }
+}
+
 .choices {
   @include gridify(2, 85rem, 1.2rem);
+  min-width: 90%;
   margin-top: 1rem;
 
   button {

@@ -1,24 +1,27 @@
 import React from 'react';
+import classnames from 'classnames';
 import { IQuizChoice } from '../../types/app';
 import styles from './QuizCard.module.scss';
 
 interface IQuizCardProps {
-  nextRound: () => void;
+  className?: string;
   scoreHandler: (userAnswerID: number) => void;
   currentQuestion: IQuizChoice;
+  round: number;
 }
 
 const QuizCard = ({
   currentQuestion,
   scoreHandler,
-  nextRound,
+  round,
+  className,
 }: IQuizCardProps): JSX.Element => {
   const correctAnwer = currentQuestion.choices.find(
     (answerChoice) => currentQuestion.answerID === answerChoice.id,
   );
 
-  return (
-    <section className={styles.quizCard}>
+  const createAnswerClue = () => {
+    return correctAnwer.imageUrl ? (
       <div
         className={styles.image}
         style={{ backgroundImage: `url(${correctAnwer.imageUrl})` }}
@@ -27,6 +30,21 @@ const QuizCard = ({
       >
         {' '}
       </div>
+    ) : (
+      <div className={styles.text}>
+        {correctAnwer.scientificName.split(' ').map((word, index) => (
+          <span key={index}>
+            {word}
+            <br />
+          </span>
+        ))}
+      </div>
+    );
+  };
+
+  return (
+    <section className={classnames(styles.quizCard, className)}>
+      {createAnswerClue()}
       <article className={styles.choices}>
         {currentQuestion.choices &&
           currentQuestion.choices.map((choice) => (
@@ -35,7 +53,6 @@ const QuizCard = ({
               onClick={(e) => {
                 e.preventDefault();
                 scoreHandler(choice.id);
-                nextRound();
               }}
             >
               {choice.commonName}
