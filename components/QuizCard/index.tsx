@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 import { IQuizChoice } from '../../types/app';
 import styles from './QuizCard.module.scss';
 
 interface IQuizCardProps {
   className?: string;
-  scoreHandler: (userAnswerID: number) => void;
+  checkUserAnswer: (userAnswerID: number) => boolean;
   currentQuestion: IQuizChoice;
   round: number;
+  nextRound: () => void;
 }
 
 const QuizCard = ({
   currentQuestion,
-  scoreHandler,
+  checkUserAnswer,
   round,
+  nextRound,
   className,
 }: IQuizCardProps): JSX.Element => {
   const correctAnwer = currentQuestion.choices.find(
     (answerChoice) => currentQuestion.answerID === answerChoice.id,
   );
+  const [feedback, setFeedback] = useState('');
 
   const createAnswerClue = () => {
     return correctAnwer.imageUrl ? (
@@ -42,9 +45,18 @@ const QuizCard = ({
     );
   };
 
+  const giveFeedback = (answerID) => {
+    checkUserAnswer(answerID) ? setFeedback('Correct!') : setFeedback('Incorrect.');
+    setTimeout(() => {
+      setFeedback('');
+      nextRound();
+    }, 2500);
+  };
+
   return (
     <section className={classnames(styles.quizCard, className)}>
       {createAnswerClue()}
+      {!!feedback && <h1>{feedback}</h1>}
       <article className={styles.choices}>
         {currentQuestion.choices &&
           currentQuestion.choices.map((choice) => (
@@ -52,7 +64,7 @@ const QuizCard = ({
               key={choice.id}
               onClick={(e) => {
                 e.preventDefault();
-                scoreHandler(choice.id);
+                giveFeedback(choice.id);
               }}
             >
               {choice.commonName}

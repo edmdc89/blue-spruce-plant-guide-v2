@@ -12,15 +12,12 @@ const Quiz = () => {
   const { score, round, totalRounds, nextRound, increaseScore } = useQuizTracker();
   const { plantQuiz } = data || {};
 
-  const checkUserAnswer = (userAnswerID: number) => {
+  const checkUserAnswer = (userAnswerID: number): boolean => {
     if (userAnswerID === plantQuiz[round].answerID) {
       increaseScore();
+      return true;
     }
-    if (round === totalRounds - 1) {
-      alert(`Quiz Done. Score: ${score} of ${totalRounds}`);
-      return;
-    }
-    nextRound();
+    return false;
   };
 
   return (
@@ -42,7 +39,8 @@ const Quiz = () => {
           <QuizCard
             className={styles.card}
             round={round}
-            scoreHandler={(userAnswerID) => checkUserAnswer(userAnswerID)}
+            checkUserAnswer={checkUserAnswer}
+            nextRound={nextRound}
             currentQuestion={plantQuiz[round]}
           />
         )}
