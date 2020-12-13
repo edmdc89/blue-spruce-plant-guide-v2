@@ -53,11 +53,13 @@ const QuizCard = ({
     }, 2000);
   };
 
+  const feedbackType = feedback === 'Correct!' ? styles.correct : styles.incorrect;
+
   return (
     <section className={classnames(styles.quizCard, className)}>
       {createAnswerClue()}
       {!!feedback && (
-        <div className={styles.feedback}>
+        <div className={classnames(styles.feedback, feedbackType)}>
           <h1>{feedback}</h1>
         </div>
       )}
