@@ -5,20 +5,20 @@
   @include flexColumn;
   height: 85vh;
   margin: 0 auto;
-  padding: 1rem;
+  position: relative;
 }
 
 .image {
   @include positionImage;
   @include margin_bottom_1;
   height: 70%;
-  min-width: 90%;
+  min-width: 95%;
 }
 
 .text {
   @include flexColumn;
   height: 70%;
-  min-width: 90%;
+  min-width: 95%;
 
   span {
     font-size: 5.5rem;
@@ -28,10 +28,24 @@
   }
 }
 
+.feedback {
+  animation: feedback-fade-in 1s ease-in-out;
+  position: absolute;
+  background-color: cornflowerblue;
+  top: 2.5rem;
+  height: 70%;
+  min-width: 95%;
+
+  h1 {
+    @include feedback-heading;
+  }
+}
+
 .choices {
   @include gridify(2, 85rem, 1.2rem);
-  min-width: 90%;
+  min-width: min-content;
   margin-top: 1rem;
+  padding: 0 1.4rem;
 
   button {
     @include buttonStyles;

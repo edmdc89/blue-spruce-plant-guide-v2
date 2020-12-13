@@ -50,13 +50,17 @@ const QuizCard = ({
     setTimeout(() => {
       setFeedback('');
       nextRound();
-    }, 2500);
+    }, 2000);
   };
 
   return (
     <section className={classnames(styles.quizCard, className)}>
       {createAnswerClue()}
-      {!!feedback && <h1>{feedback}</h1>}
+      {!!feedback && (
+        <div className={styles.feedback}>
+          <h1>{feedback}</h1>
+        </div>
+      )}
       <article className={styles.choices}>
         {currentQuestion.choices &&
           currentQuestion.choices.map((choice) => (
