@@ -5,4 +5,5 @@ export const feedbackFadeIn: string;
 export const image: string;
 export const incorrect: string;
 export const quizCard: string;
+export const quizEnd: string;
 export const text: string;

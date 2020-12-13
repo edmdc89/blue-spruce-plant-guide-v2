@@ -5,6 +5,7 @@
   @include flexColumn;
   height: 85vh;
   margin: 0 auto;
+  max-width: $maxWidth;
   position: relative;
 
   .image {
@@ -51,10 +52,17 @@
     background-image: linear-gradient(to top right, rgb(187, 51, 51), rgb(225, 25, 25));
   }
 
+  .quizEnd {
+    @include primaryGradient;
+    h1 {
+      @include heading-styles('h1', 400, italic);
+      color: $textLight;
+    }
+  }
 
   .choices {
-    @include gridify(2, 85rem, 1.2rem);
-    min-width: 85%;
+    @include gridify(2, 95%, 1.2rem);
+    min-width: 95%;
     margin-top: 1rem;
     padding: 0 1.4rem;
 

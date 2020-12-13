@@ -9,7 +9,7 @@ interface IQuizTrackerHook {
 }
 
 const useQuizTracker = (): IQuizTrackerHook => {
-  const [round, setRound] = useState(0);
+  const [round, setRound] = useState(1);
   const [score, setScore] = useState(0);
   const [totalRounds, setTotalRounds] = useState(10);
 

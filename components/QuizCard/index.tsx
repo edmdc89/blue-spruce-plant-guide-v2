@@ -8,56 +8,56 @@ import { IQuizChoice } from '../../types/app';
 
 interface IQuizCardProps {
   className?: string;
+  withStats?: boolean;
 }
 
-const QuizCard = ({ className }: IQuizCardProps): JSX.Element => {
+const QuizCard = ({ className, withStats }: IQuizCardProps): JSX.Element => {
   const { round, score, totalRounds, checkUserAnswer, nextRound } = useQuizTracker();
   const { data, loading, error } = useQuery(GET_RANDOM_QUIZ);
   const [correctAnwer, setCorrectAnswer] = useState(null);
   const [choices, setChoices] = useState(null);
   const [feedback, setFeedback] = useState('');
+  const [isQuizEnd, signalQuizEnd] = useState(false);
 
   useEffect(() => {
-    const currentQuestion = data.plantQuiz[round];
-    const answer = currentQuestion.choices.find(
-      (choice) => choice.id === currentQuestion.answerID,
-    );
-    setCorrectAnswer(answer);
-    setChoices(currentQuestion.choices);
-  }, [data, round, correctAnwer]);
+    if (round !== totalRounds) {
+      const currentQuestion = data.plantQuiz[round];
+      const answer = currentQuestion.choices.find(
+        (choice) => choice.id === currentQuestion.answerID,
+      );
+      setCorrectAnswer(answer);
+      setChoices(currentQuestion.choices);
+    }
+  }, [data, round, correctAnwer, totalRounds]);
 
   const giveFeedback = (answerID: number, correctAnswerId: number) => {
     checkUserAnswer(answerID, correctAnswerId)
       ? setFeedback('Correct!')
       : setFeedback('Incorrect.');
-    setTimeout(() => {
-      setFeedback('');
-      nextRound();
-    }, 2000);
+
+    round === totalRounds - 1
+      ? setTimeout(() => {
+          signalQuizEnd(true);
+          setFeedback('');
+        }, 2000)
+      : setTimeout(() => {
+          setFeedback('');
+          nextRound();
+        }, 2000);
   };
 
   const feedbackType = feedback === 'Correct!' ? styles.correct : styles.incorrect;
 
-  if (round === totalRounds) {
-    return (
-      <article>
-        <h1>{`You got ${score} of ${totalRounds} correct.`}</h1>
-      </article>
-    );
-  }
   if (loading) return <h1>Loading ... </h1>;
 
   return correctAnwer && choices ? (
-    <section className={classnames(styles.quizCard, className)}>
+    <section className={styles.quizCard}>
       {correctAnwer?.imageUrl ? (
-        <div
+        <img
           className={styles.image}
-          style={{ backgroundImage: `url(${correctAnwer.imageUrl})` }}
-          role="img"
-          aria-label={`${correctAnwer?.scientificName} in the wild`}
-        >
-          {' '}
-        </div>
+          src={correctAnwer.imageUrl}
+          alt={`${correctAnwer?.scientificName} in the wild`}
+        />
       ) : (
         <div className={styles.text}>
           {correctAnwer.scientificName.split(' ').map((word, index) => (
@@ -71,6 +71,17 @@ const QuizCard = ({ className }: IQuizCardProps): JSX.Element => {
       {!!feedback && (
         <div className={classnames(styles.feedback, feedbackType)}>
           <h1>{feedback}</h1>
+        </div>
+      )}
+      {isQuizEnd && (
+        <div className={classnames(styles.quizEnd, styles.feedback)}>
+          <h1>
+            {`You answered`}
+            <br />
+            {`${score} of ${totalRounds}`}
+            <br />
+            {`correctly.`}
+          </h1>
         </div>
       )}
       <article className={styles.choices}>
