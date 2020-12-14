@@ -26,3 +26,11 @@ $font-size-key: (
   font-style: $style;
   font-weight: $weight;
 }
+
+@mixin feedback-heading {
+  color: $textDark;
+  font-size: 8.9rem;
+  font-style: italic;
+  font-weight: 400;
+  font-family: 'Fira Sans', sans-serif;
+}

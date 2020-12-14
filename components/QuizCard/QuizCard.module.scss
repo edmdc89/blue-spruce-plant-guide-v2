@@ -5,36 +5,70 @@
   @include flexColumn;
   height: 85vh;
   margin: 0 auto;
-  padding: 1rem;
-}
+  max-width: $maxWidth;
+  position: relative;
 
-.image {
-  @include positionImage;
-  @include margin_bottom_1;
-  height: 70%;
-  min-width: 90%;
-}
-
-.text {
-  @include flexColumn;
-  height: 70%;
-  min-width: 90%;
-
-  span {
-    font-size: 5.5rem;
-    font-weight: 700;
-    color: $textDark;
-    font-style: italic;
+  .image {
+    @include positionImage;
+    @include margin_bottom_1;
+    height: 70%;
+    min-width: 95%;
   }
-}
 
-.choices {
-  @include gridify(2, 85rem, 1.2rem);
-  min-width: 90%;
-  margin-top: 1rem;
+  .text {
+    @include flexColumn;
+    height: 70%;
+    min-width: 95%;
 
-  button {
-    @include buttonStyles;
-    height: 5.8rem;
+    span {
+      font-size: 5.5rem;
+      font-weight: 700;
+      color: $textDark;
+      font-style: italic;
+    }
+  }
+
+  .feedback {
+    animation: feedback-fade-in 1s ease-in-out;
+    position: absolute;
+    top: 2.5rem;
+    height: 72%;
+    min-width: 95%;
+
+    h1 {
+      @include feedback-heading;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .correct {
+    background-image: linear-gradient(to top right, rgb(40, 145, 47), rgb(78, 205, 35));
+  }
+
+  .incorrect {
+    background-image: linear-gradient(to top right, rgb(187, 51, 51), rgb(225, 25, 25));
+  }
+
+  .quizEnd {
+    @include primaryGradient;
+    h1 {
+      @include heading-styles('h1', 400, italic);
+      color: $textLight;
+    }
+  }
+
+  .choices {
+    @include gridify(2, 95%, 1.2rem);
+    min-width: 95%;
+    margin-top: 1rem;
+    padding: 0 1.4rem;
+
+    button {
+      @include buttonStyles;
+      height: 5.8rem;
+    }
   }
 }

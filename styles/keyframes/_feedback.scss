@@ -1,0 +1,26 @@
+@keyframes feedback-fade-in {
+ from {
+  transform: scale(0);
+  transform-origin: bottom left;
+
+}
+  25% {
+    border-radius: 35% 60% 35% 0;
+    transform-origin: bottom left;
+  }
+
+  50% {
+    border-radius: 25% 50% 25% 0;
+    transform-origin: bottom left;
+  }
+
+  75% {
+    border-radius: 17% 30% 17% 0;
+    transform-origin: bottom left;
+  }
+
+  100% {
+    transform: scale(1);
+    border-radius: .5rem;
+  }
+}

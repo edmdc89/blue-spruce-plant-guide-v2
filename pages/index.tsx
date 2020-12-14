@@ -7,6 +7,7 @@ import QuizCard from '../components/QuizCard';
 import { IPlantDetails } from '../types/app';
 import styles from '../styles/pages/index.module.scss';
 import { GET_RANDOM_PLANT_PAGE, GET_RANDOM_QUIZ } from '../lib/apolloClient/queries';
+import useQuizTracker from '../lib/hooks/useQuizTracker';
 import { isAuthenticated } from '../lib/apolloClient/cache';
 import Layout from '../components/Layout';
 
@@ -18,7 +19,6 @@ const GET_CURRENT_USER = gql`
 
 const Home = (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_RANDOM_PLANT_PAGE);
-  const { loading: loadingQuiz, data: quizData } = useQuery(GET_RANDOM_QUIZ);
   const { loading: loadingUser, data: userData, error: userError } = useQuery(
     GET_CURRENT_USER,
   );
@@ -38,18 +38,12 @@ const Home = (): JSX.Element => {
     onLoad();
   }, []);
 
-  const randomIndex = Math.floor(Math.random() * 9);
-
-  const scoreHandler = (answerID) => {
-    return answerID;
-  };
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
 
   return (
     <Layout>
-      {loading || loadingQuiz ? (
+      {loading ? (
         <h1>Loading</h1>
       ) : (
         <section className={styles.container}>
@@ -60,15 +54,9 @@ const Home = (): JSX.Element => {
               ))}
             </div>
           </article>
-          {quizData && (
-            <article className={styles.cell}>
-              <QuizCard
-                nextRound={() => console.log('oops')}
-                scoreHandler={scoreHandler}
-                currentQuestion={quizData.plantQuiz[0]}
-              />
-            </article>
-          )}
+          <article className={styles.cell}>
+            <QuizCard />
+          </article>
         </section>
       )}
     </Layout>

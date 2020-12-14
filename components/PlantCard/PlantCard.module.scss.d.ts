@@ -1,4 +1,5 @@
 export const back: string;
+export const feedbackFadeIn: string;
 export const front: string;
 export const italic: string;
 export const plantCard: string;
